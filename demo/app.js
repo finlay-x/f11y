@@ -6,11 +6,6 @@ let myAccordion = new f11y.Accordion(accordionElm ,
     }
 );
 
-const dropdowns = document.querySelectorAll(".dropdown--js");
-dropdowns.forEach(function (dropdownElm) {
-    let myDropdown = new f11y.Dropdown(dropdownElm);
-});
-
 const layers = document.querySelectorAll(".layer--js");
 layers.forEach(function (layerElm) {
     new f11y.Layer(layerElm,
@@ -19,6 +14,11 @@ layers.forEach(function (layerElm) {
             onClose: (event, layer) => { console.log(event, layer) }
         }
     );
+});
+
+const dropdowns = document.querySelectorAll(".dropdown--js");
+dropdowns.forEach(function (dropdownElm) {
+    new f11y.Dropdown(dropdownElm);
 });
 
 

@@ -4,16 +4,16 @@ let f11y = f11y || {};
 
 /** @type {Array.<string>} */
 f11y.focusableElements = [
-    'a[href]:not([disabled]):not([hidden]):not([aria-hidden])',
-    'area[href]:not([disabled]):not([hidden]):not([aria-hidden])',
-    'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
-    'select:not([disabled]):not([aria-hidden])',
-    'textarea:not([disabled]):not([aria-hidden])',
-    'button:not([disabled]):not([aria-hidden])',
-    'iframe:not([disabled]):not([hidden]):not([aria-hidden])',
-    'object:not([disabled]):not([hidden]):not([aria-hidden])',
-    'embed:not([disabled]):not([hidden]):not([aria-hidden])',
-    '[contenteditable]:not([disabled]):not([hidden]):not([aria-hidden])',
+    'a[href]:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
+    'area[href]:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
+    'input:not([disabled]):not([type="hidden"]):not([aria-hidden]):not([tabindex^="-"])',
+    'select:not([disabled]):not([aria-hidden]):not([tabindex^="-"])',
+    'textarea:not([disabled]):not([aria-hidden]):not([tabindex^="-"])',
+    'button:not([disabled]):not([aria-hidden]):not([tabindex^="-"])',
+    'iframe:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
+    'object:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
+    'embed:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
+    '[contenteditable]:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
     '[tabindex]:not([tabindex^="-"])',
     '[role="menuitem"]:not([disabled]):not([hidden]):not([aria-hidden])'
 ];
@@ -755,6 +755,7 @@ f11y.globalSettings = {
             this.dialog = this.layer.querySelector('[role="dialog"]');
             this.triggerNodes = document.querySelectorAll('[' + this.options.openTrigger + '="' + this.layer.id + '"]');
             this.focusableElements = Array.from(this.layer.querySelectorAll(f11y.focusableElements));
+            this.filterFocusableElements();
             this.dialog.addEventListener( 'click', this.onLayerClick.bind(this), true );
 
             for (let i = 0; i < this.triggerNodes.length; i++) {
@@ -777,6 +778,20 @@ f11y.globalSettings = {
          */
         refresh(){
             this.init();
+        }
+
+
+        filterFocusableElements(){
+            console.log(this.focusableElements);
+
+            for (let i = 0; i < this.focusableElements.length; i++) {
+                const element = this.focusableElements[i];
+                if(element.getBoundingClientRect().height === 0 && element.getBoundingClientRect().width === 0){
+                    console.log(element);
+                }
+            }
+
+            console.log(this.focusableElements);
         }
 
         /**
@@ -960,14 +975,14 @@ f11y.globalSettings = {
          * @param {Event} event The event object that triggered the method
          */
         onLayerClick (event) {
-            event.preventDefault()
-            event.stopPropagation()
+            if(this.options != undefined && this.options.closeTrigger != undefined){
+                const closeTrigger = this.options.closeTrigger;
 
-            const closeTrigger = this.options.closeTrigger;
-            if (event.target.hasAttribute(closeTrigger) || event.target.parentNode.hasAttribute(closeTrigger)) {
-                event.preventDefault()
-                event.stopPropagation()
-                this.closeLayer(event)
+                if (event.target.hasAttribute(closeTrigger) || event.target.parentNode.hasAttribute(closeTrigger)) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    this.closeLayer(event)
+                }
             }
         }
 

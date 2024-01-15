@@ -34,6 +34,18 @@
 
                         For instance, we can write the following HTML:
                     </p>
+                    <section class="section-container">
+                        <h3>Dropdown</h3>
+                        <div class="f11y--dropdown dropdown--js">
+                            <button id="dropdown__toggle--2" type="button" aria-haspopup="true" aria-controls="dropdown__inner--2">Dropdown</button>
+                            <ul id="dropdown__inner--2" role="menu" aria-hidden="true" aria-labelledby="dropdown__toggle--2">
+                                <li role="menuitem">A. Menu Item 1</li>
+                                <li role="menuitem">B. Menu Item 2</li>
+                                <li role="menuitem">C. Menu Item 3</li>
+                            </ul>
+                        </div>
+                    </section>
+
                     <input type="text">
                     <button>fdsfd</button>
                 </main>
