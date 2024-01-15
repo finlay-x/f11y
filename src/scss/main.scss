@@ -1,0 +1,70 @@
+.f11y--dropdown{
+    position: relative;
+    [role=menu]{
+        display: none;
+        position: absolute;
+    }
+
+    &.is-open{
+        [role=menu]{
+            display: block;
+        }
+    }
+}
+
+
+.f11y--layer {
+    display: none;
+
+    &.is-open {
+        display: flex;
+        z-index: 10;
+    }
+}
+
+
+.f11y--tooltip {
+    --gap: .5em;
+    position: relative;
+
+    display: inline-block;
+}
+
+// This allows users to move their cursor from the button to the tooltip
+.f11y--tooltip::after {
+    position: absolute;
+    right: -20%;
+    top: 100%;
+    left: -20%;
+    display: block;
+    height: calc(var(--gap) * 2);
+}
+
+.f11y--tooltip.tooltip-visible::after {
+    content: '';
+}
+
+.f11y--tooltip[f11y-tooltip-position=bottom]::after,
+.f11y--tooltip[f11y-tooltip-position=bottom] [role=tooltip] {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.f11y--tooltip[f11y-tooltip-position=top]::after,
+.f11y--tooltip[f11y-tooltip-position=top] [role=tooltip] {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+[role=tooltip] {
+    display: none;
+    position: absolute;
+    width:max-content;
+}
+
+
+[role=tooltip].is-open{
+    display:block;
+}
