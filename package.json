@@ -6,7 +6,8 @@
     "scripts": {
         "production": "gulp production",
         "watch": "gulp watch",
-        "watch:browsersync": "gulp watch_browsersync"
+        "watch:browsersync": "gulp watch_browsersync",
+        "sizes": "gzip-size dist/scripts/f11y.min.js --include-original"
     },
     "repository": {
         "type": "git"
@@ -23,6 +24,7 @@
         "gulp-postcss": "^9.0.1",
         "gulp-rename": "^2.0.0",
         "gulp-sass": "^5.1.0",
+        "gzip-size-cli": "^5.1.0",
         "sass": "^1.66.1",
         "typescript": "^5.3.3"
     }

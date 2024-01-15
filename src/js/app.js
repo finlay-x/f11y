@@ -1,21 +1,25 @@
+
 let f11y = f11y || {};
 
+
+/** @type {Array.<string>} */
 f11y.focusableElements = [
-    'a[href]',
-    'area[href]',
+    'a[href]:not([disabled]):not([hidden]):not([aria-hidden])',
+    'area[href]:not([disabled]):not([hidden]):not([aria-hidden])',
     'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
     'select:not([disabled]):not([aria-hidden])',
     'textarea:not([disabled]):not([aria-hidden])',
     'button:not([disabled]):not([aria-hidden])',
-    'iframe',
-    'object',
-    'embed',
-    '[contenteditable]',
+    'iframe:not([disabled]):not([hidden]):not([aria-hidden])',
+    'object:not([disabled]):not([hidden]):not([aria-hidden])',
+    'embed:not([disabled]):not([hidden]):not([aria-hidden])',
+    '[contenteditable]:not([disabled]):not([hidden]):not([aria-hidden])',
     '[tabindex]:not([tabindex^="-"])',
-    '[role="menuitem"]'
+    '[role="menuitem"]:not([disabled]):not([hidden]):not([aria-hidden])'
 ];
 
 
+/** @type {Object} */
 f11y.globalSettings = {
     animatingClass: 'is-animating',
     animatingOpenClass: 'is-opening',
@@ -26,16 +30,23 @@ f11y.globalSettings = {
 }
 
 
-
-
 /**
- * Description: 
+ * Description: For accordion, details/summary and disclosure components
  *
  * @class Accordion
  */
     f11y.Accordion = class Accordion {
+        /**      
+         * Stores all the required information of the individual accordion items.
+         * @typedef {Object} AccordionItemObject
+         * @property {number} index - 
+         * @property {Element} item - 
+         * @property {Element} itemPanel - 
+         * @property {Element} itemTrigger - 
+         * @property {string} isOpen -
+         */
+
         /**
-         * 
          * @param {HTMLElement | Element} domNode 
          * @param {Object} opts 
          */
@@ -49,24 +60,29 @@ f11y.globalSettings = {
 
             this.options = Object.assign(DEFAULTS, opts);
             this.accordionGroupNode = domNode;
+
+            /** @type {Array.<AccordionItemObject>} */
             this.accordionItems = [];
 
             this.init();
         }
 
+        /**
+         * Initialises the class component
+         */
         init(){
             const items = Array.from(this.accordionGroupNode.querySelectorAll(".f11y--accordion__item"));
             for (let i = 0; i < items.length; i += 1) {
-                const item = items[i];
-                const itemPanel = item.querySelector('[role="region"]');
-                const itemTrigger = item.querySelector("[aria-controls]");
+                const itemNode = items[i];
+                const itemPanelNode = itemNode.querySelector('[role="region"]');
+                const itemTriggerNode = itemNode.querySelector("[aria-controls]");
 
                 const itemArr = {
                     index: i,
-                    item: item,
-                    itemPanel: itemPanel,
-                    itemTrigger: itemTrigger,
-                    isOpen: itemTrigger.getAttribute("aria-expanded"),
+                    item: itemNode,
+                    itemPanel: itemPanelNode,
+                    itemTrigger: itemTriggerNode,
+                    isOpen: itemTriggerNode.getAttribute("aria-expanded"),
                 };
 
                 this.accordionItems.push(itemArr);
@@ -80,6 +96,9 @@ f11y.globalSettings = {
             }
         }
 
+        /**
+         * Refreshes the class component and calls init() and does any necessary resets
+         */
         refresh(){
             this.accordionItems = [];
             this.init();
@@ -87,8 +106,8 @@ f11y.globalSettings = {
 
         /**
          * Toggles passed accordion item.
-         * @param  {Object}  accordionItemObj  Object that represents a singular accordion item.
-         * @param  {Object}  event             The event that triggered this function method.
+         * @param  {AccordionItemObject}  accordionItemObj  Object that represents a singular accordion item.
+         * @param  {Event|KeyboardEvent}  event             The event that triggered this function method.
          */
         toggle(accordionItemObj, event) {
             let openState = accordionItemObj.isOpen;
@@ -111,7 +130,7 @@ f11y.globalSettings = {
 
         /**
          * Closes all accordion items.
-         * @param  {Object}  event  The event that triggered this function method.
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this function method.
          */
         closeAll(event) {
             for (let i = 0; i < this.accordionItems.length; i += 1) {
@@ -125,7 +144,7 @@ f11y.globalSettings = {
 
         /**
          * Opens all accordion items.
-         * @param  {Object}  event  The event that triggered this function method.
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this function method.
          */
         openAll(event) {
             if (this.options.showMultiple === false) {
@@ -139,8 +158,8 @@ f11y.globalSettings = {
 
         /**
          * Opens the passed accordion item.
-         * @param  {Object}  event             The event that triggered this function method.
-         * @param  {Object}  accordionItemObj  Object that represents a singular accordion item.
+         * @param  {Event|KeyboardEvent}  event             The event that triggered this function method.
+         * @param  {AccordionItemObject}  accordionItemObj  Object that represents a singular accordion item.
          */
         openItem(event, accordionItemObj) {
             let openState = accordionItemObj.isOpen;
@@ -159,8 +178,8 @@ f11y.globalSettings = {
 
         /**
          * Closes the passed accordion item.
-         * @param  {Object}  event             The event that triggered this function method.
-         * @param  {Object}  accordionItemObj  Object that represents a singular accordion item.
+         * @param  {Event|KeyboardEvent}  event             The event that triggered this function method.
+         * @param  {AccordionItemObject}  accordionItemObj  Object that represents a singular accordion item.
          */
         closeItem(event, accordionItemObj) {
             let openState = accordionItemObj.isOpen;
@@ -179,20 +198,19 @@ f11y.globalSettings = {
 
 
 /**
- * Description: 
+ * Description: For dropdown menu, combobox, popovers,  and disclosure components
  *
  * @class Dropdown
  */
     f11y.Dropdown = class Dropdown {
         /**
-         * Constructor: Finds all relevant Elements within domNode and attaches all necessary events
-         * @param  {HTMLElement | Element}  domNode  The DOM element to initialise on
-         * @param  {Object}                 opts     Optional params to modify functionality
+         * @param  {HTMLElement | Element} domNode The DOM element to initialise on
+         * @param  {Object} opts Optional params to modify functionality
          */
         constructor(domNode, opts) {
             const DEFAULTS = {
-                onOpen: () => {}, /*@params event, this*/
-                onClose: () => {}, /*@params event, this*/
+                onOpen: () => {},
+                onClose: () => {},
                 openClass: 'is-open',
                 triggerNodeSelector: 'button[aria-controls]',
                 dropdownNodeSelector: '[role="menu"]',
@@ -205,16 +223,19 @@ f11y.globalSettings = {
 
             this.options = Object.assign(DEFAULTS, opts);
             this.domNode = domNode;
-            this.triggerNode = '';
-            this.dropdownNode = '';
+
+            /** @type {Array.<Element|HTMLElement>} */
             this.dropdownItemNodes = [];
-            this.firstDropdownItem = false;
-            this.lastDropdownItem = false;
+
+            /** @type {Array.<String>} */
             this.firstChars = [];
 
             this.init();
         }
 
+        /**
+         * Initialises the class component
+         */
         init() {
             this.triggerNode = this.domNode.querySelector(this.options.triggerNodeSelector);
             this.dropdownNode = this.domNode.querySelector(this.options.dropdownNodeSelector);
@@ -240,6 +261,7 @@ f11y.globalSettings = {
                 if (!this.firstDropdownItem) {
                     this.firstDropdownItem = dropdownItem;
                 }
+
                 this.lastDropdownItem = dropdownItem;
             }
 
@@ -252,6 +274,9 @@ f11y.globalSettings = {
             window.addEventListener('resize', this.checkBoundingBox.bind(this));
         }
 
+        /**
+         * Refreshes the class component and calls init() and does any necessary resets
+         */
         refresh() {
             this.dropdownItemNodes = [];
             this.firstChars = [];
@@ -259,8 +284,17 @@ f11y.globalSettings = {
         }
 
         /**
+         * Checks whether the dropdown is open
+         * @returns  {boolean}
+         */
+        isOpen() {
+            return this.triggerNode.getAttribute('aria-expanded') === 'true';
+        }
+        
+
+        /**
          * Sets focus to a menu item.
-         * @param  {HTMLElement}  newDropdownItem  New target menu item
+         * @param  {HTMLElement} newDropdownItem New target menu item
          */
         setFocusToDropdownItem(newDropdownItem) {
             this.dropdownItemNodes.forEach(function (item) {
@@ -332,7 +366,7 @@ f11y.globalSettings = {
 
 
         /**
-         * Sets focus by the the first chracter of a menu item
+         * Sets focus by the the first character of a menu item
          * @param  {HTMLElement | Element}  currentDropdownItem  Currently focused item within the dropdown menu
          * @param  {string}                 char             The character to base the focus on
          */
@@ -361,28 +395,11 @@ f11y.globalSettings = {
             }
         }
 
-        getIndexFirstChars(startIndex, char) {
-            for (let i = startIndex; i < this.firstChars.length; i++) {
-                if (char === this.firstChars[i]) {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        /**
-         * Checks whether the dropdown is open
-         * @returns  {boolean}
-         */
-        isOpen() {
-            return this.triggerNode.getAttribute('aria-expanded') === 'true';
-        }
-
         /**
          * Opens the dropdown
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
-        openDropdown(event = null) {
+        openDropdown(event) {
             const domNode = this.domNode;
             const dropdownNode = this.dropdownNode;
             const triggerNode = this.triggerNode;
@@ -411,9 +428,9 @@ f11y.globalSettings = {
 
         /**
          * Closes the dropdown
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
-        closeDropdown(event = null) {
+        closeDropdown(event) {
             if (this.isOpen()) {
                 const domNode = this.domNode;
                 const dropdownNode = this.dropdownNode;
@@ -464,7 +481,7 @@ f11y.globalSettings = {
 
         /**
          * Handles all Trigger toggle keyboard events
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
         onTriggerKeydown(event) {
             const key = event.key;
@@ -501,7 +518,7 @@ f11y.globalSettings = {
                     break;
 
                 case 'Tab':
-                    if(this.isOpen){
+                    if(this.isOpen()){
                         this.closeDropdown(event);
                     }
                     flag = false;
@@ -519,7 +536,7 @@ f11y.globalSettings = {
 
         /**
          * Handles Trigger toggle click event
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
         onTriggerClick(event) {
             if (this.isOpen()) {
@@ -537,7 +554,7 @@ f11y.globalSettings = {
 
         /**
          * Handles all keyboard events on the menu items
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {KeyboardEvent}  event  The event that triggered this method
          */
         onDropdownItemKeydown(event) {
             const tgt = event.currentTarget;
@@ -560,7 +577,7 @@ f11y.globalSettings = {
 
                 if (event.key === 'Tab') {
                     this.triggerNode.focus();
-                    this.closeDropdown();
+                    this.closeDropdown(event);
                     flag = true;
                 }
             } else {
@@ -626,7 +643,7 @@ f11y.globalSettings = {
 
         /**
          * Handles hover event for menu items
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
         onDropdownItemMouseover(event) {
             const tgt = event.currentTarget;
@@ -635,7 +652,7 @@ f11y.globalSettings = {
 
         /**
          * Handles click events on menu items
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
          */
         onDropdownItemClick(event) {
             if (this.options.updateOnSelect === true) {
@@ -652,6 +669,7 @@ f11y.globalSettings = {
             let dropdownBounds = this.dropdownNode.getBoundingClientRect();
             this.checkVerticalBounding(dropdownBounds);
         }
+
 
         checkVerticalBounding(dropdownBounds) {
             let windowHeight = window.innerHeight
@@ -691,7 +709,7 @@ f11y.globalSettings = {
 
 
 /**
- * Description: 
+ * Description: For modal, sheet, popovers, and dialog components
  *
  * @class Layer
  */
@@ -729,6 +747,9 @@ f11y.globalSettings = {
             this.init();
         }
 
+        /**
+         * Initialises the class component
+         */
         init(){
             this.id = this.layer.id;
             this.dialog = this.layer.querySelector('[role="dialog"]');
@@ -751,14 +772,25 @@ f11y.globalSettings = {
             this.onWindowKeydownBound = this.onWindowKeydown.bind(this);
         }
 
+        /**
+         * Refreshes the class component and calls init() and does any necessary resets
+         */
         refresh(){
-            init();
+            this.init();
         }
 
+        /**
+         * Checks whether the layer is open
+         * @returns  {boolean}
+         */
         isOpen() {
             return this.layer.getAttribute('aria-hidden') === 'false';
         }
 
+        /**
+         * Checks whether the layer is open
+         * @param {Element | HTMLElement}  newElement Element Node to move focus to
+         */
         setFocusToElement(newElement) {
             this.focusableElements.forEach(function (element) {
                 if (element === newElement) {
@@ -769,14 +801,24 @@ f11y.globalSettings = {
             })
         }
 
+        /**
+         * Sets Focus to the first focusable item inside the layer
+         */
         setFocusToFirstElement() {
             this.setFocusToElement(this.firstElement);
         }
 
+        /**
+         * Sets Focus to the last focusable item inside the layer
+         */
         setFocusToLastElement() {
             this.setFocusToElement(this.lastElement);
         }
 
+        /**
+         * Sets Focus to the previous focusable item inside the layer
+         * @param {Element | HTMLElement}  currentElement the currently focused element within the layer
+         */
         setFocusToPrevElement(currentElement) {
             let newElement, index;
 
@@ -792,6 +834,10 @@ f11y.globalSettings = {
             return newElement;
         }
 
+        /**
+         * Sets Focus to the next focusable item inside the layer
+         * @param {Element | HTMLElement}  currentElement the currently focused element within the layer
+         */
         setFocusToNextElement(currentElement) {
             let newElement, index;
 
@@ -808,7 +854,11 @@ f11y.globalSettings = {
             return newElement;
         }
 
-        openLayer (event = null) {
+        /**
+         * Opens the layer
+         * @param {Event | KeyboardEvent}  event The event object that triggered the method
+         */
+        openLayer (event) {
             this.activeElement = document.activeElement;
 
             const layerNode = this.layer;
@@ -838,7 +888,11 @@ f11y.globalSettings = {
             this.options.onOpen(event, this);
         }
 
-        closeLayer (event = null) {
+        /**
+         * Closes the layer
+         * @param {Event | KeyboardEvent}  event The event object that triggered the method
+         */
+        closeLayer (event) {
             if (this.isOpen()) {
                 const layerNode = this.layer;
                 const documentBody = document.querySelector('body');
@@ -874,16 +928,26 @@ f11y.globalSettings = {
             this.options.onClose(event, this);
         }
 
+        /**
+         * Adds bound methods window events 
+         */
         addGlobalListeners() {
             window.addEventListener('keydown', this.onWindowKeydownBound);
             window.addEventListener('mousedown', this.onBackgroundMousedownBound);
         }
         
+        /**
+         * Removes bound methods window events 
+         */
         removeGlobalListeners() {
             window.removeEventListener('keydown', this.onWindowKeydownBound);
             window.removeEventListener('mousedown', this.onBackgroundMousedownBound);
         }
 
+        /**
+         * Closes a layer by id attribute
+         * @param {string} targetLayer id string of the layer to be closed
+         */
         closeLayerById (targetLayer) {
             this.layer = document.getElementById(targetLayer);
             if (this.layer){
@@ -891,6 +955,10 @@ f11y.globalSettings = {
             }
         }
 
+        /**
+         * Checks on clicks within the layer
+         * @param {Event} event The event object that triggered the method
+         */
         onLayerClick (event) {
             event.preventDefault()
             event.stopPropagation()
@@ -903,6 +971,10 @@ f11y.globalSettings = {
             }
         }
 
+        /**
+         * Implements window keydown events functionality
+         * @param {KeyboardEvent} event The event object that triggered the method
+         */
         onWindowKeydown(event) {
             let flag = false;
             const tgt = event.target || event.currentTarget;
@@ -947,8 +1019,8 @@ f11y.globalSettings = {
         }
 
         /**
-         * Handles click events that are outside of the dropdown remit
-         * @param  {Object}  event  The event that triggered this method
+         * Handles click events that are outside of the layer dialog remit
+         * @param  {Event}  event  The event that triggered this method
          */
         onBackgroundMousedown(event) {
             if (!this.dialog.contains(event.target)) {
@@ -964,7 +1036,7 @@ f11y.globalSettings = {
 
 
 /**
- * Description: 
+ * Description: For ARIA defined responsive table components
  *
  * @class Table
  */
@@ -991,7 +1063,7 @@ f11y.globalSettings = {
         }
 
         refresh(){
-            init();
+            this.init();
         }
 
         insertCellHeaders(){
@@ -1254,8 +1326,8 @@ f11y.globalSettings = {
                 tooltipNodeSelector: '[role=tooltip]',
                 positionAttributeName: 'f11y-tooltip-position',
                 openClass: 'is-open',
-                awaitCloseAnimation: false,
-                awaitOpenAnimation: false
+                awaitCloseAnimation: true,
+                awaitOpenAnimation: true
             }
 
             this.domNode = domNode;
@@ -1296,28 +1368,26 @@ f11y.globalSettings = {
         }
 
         isOpen() {
-            return this.domNode.classList.contains('is-open') === 'true';
+            return this.domNode.classList.contains(this.options.openClass) === 'true';
         }
 
         openTooltip(){
-            this.domNode.classList.add('is-open');
-            this.tooltipNode.classList.add('is-open');
+            const domNode = this.domNode;
+            const tooltipNode = this.tooltipNode;
 
+            domNode.classList.add('is-open');
+            tooltipNode.classList.add('is-open');
+            
             this.checkBoundingBox();
             this.addGlobalListeners();
-
-            clearTimeout(this.timer);
         }
 
         closeTooltip(){
             const domNode = this.domNode;
             const tooltipNode = this.tooltipNode;
+
             domNode.classList.remove('is-open');
             tooltipNode.classList.remove('is-open');
-
-            this.timer = setTimeout(function(){
-                
-            }, 500);
 
             this.resetBoundingBox();
             this.removeGlobalListeners();

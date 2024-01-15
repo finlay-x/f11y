@@ -121,6 +121,14 @@ button:hover{
     overflow-y: auto;
 }
 
+[role=tooltip]{
+    transform-origin: center center;
+}
+
+.f11y--tooltip button{
+    margin: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
 }
 
@@ -171,9 +179,14 @@ button:hover{
 
 .f11y--layer.is-animating.is-opening [role=dialog]{
     animation: 
-        fadeIn 0.2s cubic-bezier(0, 0, 0.2, 1), 
-        scaleIn 0.2s cubic-bezier(0, 0, .2, 1);
+        fadeIn 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
+
+.f11y--tooltip.is-animating.is-opening [role=tooltip]{
+    animation: 
+        fadeIn 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
 
 .f11y--dropdown.is-animating.is-opening #dropdown__inner {
     animation: 
@@ -191,6 +204,11 @@ button:hover{
     animation: 
         fadeOut 0.2s cubic-bezier(0, 0, 0.2, 1), 
         scaleOut 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.f11y--tooltip.is-animating.is-closing [role=tooltip]{
+    animation: 
+        fadeOut 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 
