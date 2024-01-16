@@ -18,7 +18,12 @@ layers.forEach(function (layerElm) {
 
 const dropdowns = document.querySelectorAll(".dropdown--js");
 dropdowns.forEach(function (dropdownElm) {
-    new f11y.Dropdown(dropdownElm);
+    new f11y.Dropdown(
+        dropdownElm,
+        {
+            updateTargetSelector: '#test-target'
+        }
+        );
 });
 
 

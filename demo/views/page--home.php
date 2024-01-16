@@ -44,6 +44,16 @@ render_partial(
 );
 
 render_partial(
+    'components/component__toast', 
+    array()
+);
+
+render_partial(
+    'components/component__input-slider', 
+    array()
+);
+
+render_partial(
     'components/component__table', 
     array()
 );

@@ -43,19 +43,17 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 
 
 ## V0.1
-* Update Target on Dropdown
-* Implement Search on Dropdown
 * Implement Toasts
+* Implement Custom Input Sliders
 * Finish JSDoc & Typescript Documentation
 * Fix moving focus to next item in tabs when autodisable is on
-* Fix Esc and overflow issues on nested layers
 
 ## V0.2
+* Implement Search on Dropdown
 * Implement animation for Accordions
 * Implement convert to accordion functionality on tabs
 * Implement swipe support on tab panels
 
 ## V1
-New Components: Custom input slider
 Plugin: Resizable Windows
 Plugin: Date Picker

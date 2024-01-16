@@ -1,8 +1,5 @@
-
 let f11y = f11y || {};
 
-
-/** @type {Array.<string>} */
 f11y.focusableElements = [
     'a[href]:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
     'area[href]:not([disabled]):not([hidden]):not([aria-hidden]):not([tabindex^="-"])',
@@ -18,8 +15,6 @@ f11y.focusableElements = [
     '[role="menuitem"]:not([disabled]):not([hidden]):not([aria-hidden])'
 ];
 
-
-/** @type {Object} */
 f11y.globalSettings = {
     animatingClass: 'is-animating',
     animatingOpenClass: 'is-opening',
@@ -27,6 +22,18 @@ f11y.globalSettings = {
     awaitOpenAnimation: false,
     awaitCloseAnimation: false,
     openClass: 'is-open',
+}
+
+
+/**      
+ * Stores all the required information of the individual accordion items.
+ * @typedef {Object} Store
+ * @property {Array.<string>} activeLayers - All currently active layers on the page
+ * @property {string} activeLayer - the currently active layer
+ */
+f11y.store = {
+    activeLayers: [],
+    activeLayer: '',
 }
 
 
@@ -39,11 +46,19 @@ f11y.globalSettings = {
         /**      
          * Stores all the required information of the individual accordion items.
          * @typedef {Object} AccordionItemObject
-         * @property {number} index - 
-         * @property {Element} item - 
-         * @property {Element} itemPanel - 
-         * @property {Element} itemTrigger - 
-         * @property {string} isOpen -
+         * @property {number} index - The index of the item in the accordion group, beginning at 0
+         * @property {Element} item - The item node/element
+         * @property {Element} itemPanel - The panel node/element within the item
+         * @property {Element} itemTrigger - The trigger node/element within the item
+         * @property {string} isOpen - Is the item open?
+         */
+
+        /**
+         * @typedef {Object} AccordionDefault
+         * @property {Function} onOpen - Function called once item is opened
+         * @property {Function} onClose - Function called once item closed
+         * @property {string} itemClass - The classname targeted for finding all accordion items
+         * @property {boolean} showMultiple - Should the Accordion allow multiple items open at once
          */
 
         /**
@@ -58,7 +73,10 @@ f11y.globalSettings = {
                 showMultiple: true,
             };
 
+            /** @type {AccordionDefault} Stores all configuration options */
             this.options = Object.assign(DEFAULTS, opts);
+            
+            /** @type {HTMLElement | Element} The passed domNode */
             this.accordionGroupNode = domNode;
 
             /** @type {Array.<AccordionItemObject>} */
@@ -168,7 +186,7 @@ f11y.globalSettings = {
                 return;
             }
 
-            accordionItemObj.itemPanel.removeAttribute("hidden", "");
+            accordionItemObj.itemPanel.removeAttribute("hidden");
             accordionItemObj.itemTrigger.setAttribute("aria-expanded", "true");
             accordionItemObj.isOpen = "true";
 
@@ -203,6 +221,21 @@ f11y.globalSettings = {
  * @class Dropdown
  */
     f11y.Dropdown = class Dropdown {
+
+        /**
+         * @typedef {Object} DropdownDefault
+         * @property {Function} onOpen - Function called once item is opened
+         * @property {Function} onClose - Function called once item closed
+         * @property {string} openClass - 
+         * @property {string} triggerNodeSelector - 
+         * @property {string} dropdownNodeSelector - 
+         * @property {boolean} updateOnSelect - 
+         * @property {string} updateTargetSelector - 
+         * @property {boolean} closeOnSelect - 
+         * @property {boolean} awaitCloseAnimation - 
+         * @property {boolean} awaitOpenAnimation - 
+         */
+
         /**
          * @param  {HTMLElement | Element} domNode The DOM element to initialise on
          * @param  {Object} opts Optional params to modify functionality
@@ -211,17 +244,20 @@ f11y.globalSettings = {
             const DEFAULTS = {
                 onOpen: () => {},
                 onClose: () => {},
-                openClass: 'is-open',
+                openClass: f11y.globalSettings.openClass,
                 triggerNodeSelector: 'button[aria-controls]',
                 dropdownNodeSelector: '[role="menu"]',
-                updateOnSelect: false,
+                updateOnSelect: true,
                 updateTargetSelector: '',
                 closeOnSelect: false,
                 awaitCloseAnimation: false,
                 awaitOpenAnimation: false
             }
 
+            /** @type {DropdownDefault} */
             this.options = Object.assign(DEFAULTS, opts);
+
+            /** @type {Element | HTMLElement} */
             this.domNode = domNode;
 
             /** @type {Array.<Element|HTMLElement>} */
@@ -239,6 +275,10 @@ f11y.globalSettings = {
         init() {
             this.triggerNode = this.domNode.querySelector(this.options.triggerNodeSelector);
             this.dropdownNode = this.domNode.querySelector(this.options.dropdownNodeSelector);
+
+            this.options.updateTargetSelector ? this.options.updateTargetSelector : this.options.triggerNodeSelector;
+            console.log(this.options.updateTargetSelector);
+            this.updateTargetNode = document.querySelector(this.options.updateTargetSelector);
 
             this.triggerNode.addEventListener( 'keydown', this.onTriggerKeydown.bind(this) );
             this.triggerNode.addEventListener( 'click', this.onTriggerClick.bind(this) );
@@ -411,10 +451,10 @@ f11y.globalSettings = {
 
             if (this.options.awaitOpenAnimation) {
                 domNode.addEventListener('animationend', handler );
-                domNode.classList.add('is-animating', 'is-opening');
+                domNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
                 
                 function handler() {
-                    domNode.classList.remove('is-animating', 'is-opening');
+                    domNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
 
                     domNode.removeEventListener(
                         'animationend', 
@@ -441,10 +481,10 @@ f11y.globalSettings = {
 
                 if (this.options.awaitCloseAnimation) {
                     domNode.addEventListener( 'animationend', handler );
-                    domNode.classList.add('is-animating', 'is-closing');
+                    domNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
                     
                     function handler() {
-                        domNode.classList.remove('is-animating', 'is-closing');
+                        domNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
                         domNode.classList.remove(openClass);
 
                         domNode.removeEventListener(
@@ -657,7 +697,8 @@ f11y.globalSettings = {
         onDropdownItemClick(event) {
             if (this.options.updateOnSelect === true) {
                 const menuItemTextContent = event.currentTarget.textContent;
-                this.triggerNode.querySelector('span').textContent = menuItemTextContent;
+                this.updateTargetNode.textContent = menuItemTextContent;
+                this.updateTargetNode.value = menuItemTextContent;
             }
             if(this.options.closeOnSelect === true) {
                 this.closeDropdown(event);
@@ -725,9 +766,8 @@ f11y.globalSettings = {
                 onClose: () => { },
                 openTrigger: 'f11y-layer-open',
                 closeTrigger: 'f11y-layer-close',
-                openClass: 'is-open',
-                disableScroll: false,
-                disableFocus: false,
+                openClass: f11y.globalSettings.openClass,
+                disableScroll: true,
                 closeOnBackgroundClick: true,
                 awaitCloseAnimation: false,
                 awaitOpenAnimation: false,
@@ -886,14 +926,14 @@ f11y.globalSettings = {
             layerNode.classList.add(openClass);
             layerNode.addEventListener('click', this.onLayerClick);
 
-            documentBody.style.setProperty('overflow', 'hidden');
+            this.options.disableScroll ? documentBody.style.setProperty('overflow', 'hidden') : '';
             
             if (this.options.awaitOpenAnimation) {
                 layerNode.addEventListener('animationend', handler);
-                layerNode.classList.add('is-animating', 'is-opening');
+                layerNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
 
                 function handler() {
-                    layerNode.classList.remove('is-animating', 'is-opening');
+                    layerNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
 
                     layerNode.removeEventListener( 'animationend', handler );
                 }
@@ -901,6 +941,8 @@ f11y.globalSettings = {
 
             this.setFocusToFirstElement();
             this.addGlobalListeners();
+            f11y.store.activeLayer = this.id;
+            f11y.store.activeLayers.push(this.id);
             this.options.onOpen(event, this);
         }
 
@@ -910,10 +952,15 @@ f11y.globalSettings = {
          */
         closeLayer (event) {
             if (this.isOpen()) {
+                if(this.id != f11y.store.activeLayer) return;
+
                 const layerNode = this.layer;
                 const documentBody = document.querySelector('body');
                 const openClass = this.options.openClass;
-                
+
+                f11y.store.activeLayers.pop();
+                f11y.store.activeLayer = f11y.store.activeLayers[f11y.store.activeLayers.length - 1];
+
                 layerNode.setAttribute('aria-hidden', 'true');
                 layerNode.removeEventListener('click', this.onLayerClick);
 
@@ -923,12 +970,15 @@ f11y.globalSettings = {
 
                 if (this.options.awaitCloseAnimation) {
                     layerNode.addEventListener( 'animationend', handler );
-                    layerNode.classList.add('is-animating', 'is-closing');
+                    layerNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
 
                     function handler() {
-                        layerNode.classList.remove('is-animating', 'is-closing');
+                        layerNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
                         layerNode.classList.remove(openClass);
-                        documentBody.style.removeProperty('overflow');
+
+                        if(f11y.store.activeLayers <= 0){
+                            documentBody.style.removeProperty('overflow');
+                        }
 
                         layerNode.removeEventListener(
                             'animationend', 
@@ -937,7 +987,8 @@ f11y.globalSettings = {
                     }
                 } else {
                     layerNode.classList.remove(openClass);
-                    documentBody.style.removeProperty('overflow');
+
+                    f11y.store.activeLayers <= 0 ? documentBody.style.removeProperty('overflow') : '';
                 }
             }
             this.removeGlobalListeners();
@@ -1334,7 +1385,7 @@ f11y.globalSettings = {
                 triggerNodeSelector: '[aria-labelledby]',
                 tooltipNodeSelector: '[role=tooltip]',
                 positionAttributeName: 'f11y-tooltip-position',
-                openClass: 'is-open',
+                openClass: f11y.globalSettings.openClass,
                 awaitCloseAnimation: true,
                 awaitOpenAnimation: true
             }
@@ -1384,16 +1435,17 @@ f11y.globalSettings = {
             const domNode = this.domNode;
             const tooltipNode = this.tooltipNode;
             const timer = this.timer;
+            const openClass = this.options.openClass
 
-            tooltipNode.classList.add('is-open');
+            tooltipNode.classList.add(openClass);
 
             if (!this.isOpen() && this.options.awaitOpenAnimation) {
                 domNode.addEventListener('animationend', handler );
-                domNode.classList.add('is-animating', 'is-opening');
+                domNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
                 
                 function handler() {
-                    domNode.classList.remove('is-animating', 'is-opening');
-                    domNode.classList.add('is-open');
+                    domNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingOpenClass);
+                    domNode.classList.add(openClass);
                     clearTimeout(timer);
 
                     domNode.removeEventListener(
@@ -1402,7 +1454,7 @@ f11y.globalSettings = {
                     );
                 }
             }else{
-                domNode.classList.add('is-open');
+                domNode.classList.add(openClass);
                 clearTimeout(timer);
             }
 
@@ -1419,10 +1471,10 @@ f11y.globalSettings = {
                 if (this.options.awaitCloseAnimation) {
                     this.timer = setTimeout(function(){
                         domNode.addEventListener( 'animationend', handler );
-                        domNode.classList.add('is-animating', 'is-closing');
+                        domNode.classList.add(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
     
                         function handler() {
-                            domNode.classList.remove('is-animating', 'is-closing');
+                            domNode.classList.remove(f11y.globalSettings.animatingClass, f11y.globalSettings.animatingCloseClass);
                             domNode.classList.remove(openClass);
                             tooltipNode.classList.remove(openClass);
     
