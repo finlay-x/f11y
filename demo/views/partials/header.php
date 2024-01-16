@@ -34,7 +34,9 @@ extract($parameters, EXTR_OVERWRITE);
     <body class="<?php echo $bodyClass;?>">
         <div id="page" class="site-content">
             <header id="masthead" class="site-header">
-                <h1>f11y</h1>
+                <h1>
+                    <img src="/f11y/demo/f11y-logo.svg" width="100">
+                </h1>
             </header>
             <main id="content" class="entry-content">
                 <article class="hentry">
