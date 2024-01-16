@@ -43,12 +43,12 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 
 
 ## V0.1
+* Update Target on Dropdown
 * Implement Search on Dropdown
 * Implement Toasts
-* Fix Focusable Elements issues in layers
 * Finish JSDoc & Typescript Documentation
-* Update Target on Dropdown
 * Fix moving focus to next item in tabs when autodisable is on
+* Fix Esc and overflow issues on nested layers
 
 ## V0.2
 * Implement animation for Accordions

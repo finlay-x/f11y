@@ -46,10 +46,42 @@
                         </div>
                     </section>
 
-                    <input type="text">
-                    <button>fdsfd</button>
+
+                    <div id="layer-2" class="f11y--layer layer--js" aria-hidden="true">
+                        <div class="f11y--layer__container" role="dialog" aria-modal="true" aria-labelledby="layer-title-2">
+                            <article>
+                                <header>
+                                    <h3 id="layer-title-2">Layer Title</h2>
+                                </header>
+
+                                <main>
+                                    <p>
+                                        Sometimes, we've to check if an element is visible with JavaScript.
+                                        <a href="#">fdf</a>
+                                        In this article, we'll look at how to check if an element exists in the visible DOM with JavaScript.
+                                        document.body.contains
+
+                                        We can use the document.body.contains method checks if an element is part of the visible DOM.
+
+                                        For instance, we can write the following HTML:
+                                    </p>
+                                    <div>
+                                        <button f11y-layer-close="layer-2">Close</button>
+                                    </div>
+                                </main>
+
+                                <footer>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
                     <div>
-                        <button f11y-layer-close>Close</button>
+                        <button f11y-layer-open="layer-2">Open Layer</button>
+                    </div>
+
+                    <div>
+                        <button f11y-layer-close="layer-1">Close</button>
                     </div>
                 </main>
 

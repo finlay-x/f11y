@@ -728,7 +728,7 @@ f11y.globalSettings = {
                 openClass: 'is-open',
                 disableScroll: false,
                 disableFocus: false,
-                closeOnBackgroundClick: false,
+                closeOnBackgroundClick: true,
                 awaitCloseAnimation: false,
                 awaitOpenAnimation: false,
             }
@@ -739,6 +739,7 @@ f11y.globalSettings = {
             this.id = null;
             this.dialog = null;
             this.triggerNodes = null;
+            this.closeNodes = null;
             this.focusableElements = null;
             this.firstElement = false;
             this.lastElement = false;
@@ -753,12 +754,16 @@ f11y.globalSettings = {
             this.id = this.layer.id;
             this.dialog = this.layer.querySelector('[role="dialog"]');
             this.triggerNodes = document.querySelectorAll('[' + this.options.openTrigger + '="' + this.layer.id + '"]');
+            this.closeNodes = document.querySelectorAll('[' + this.options.closeTrigger + '="' + this.layer.id + '"]');
             this.focusableElements = Array.from(this.layer.querySelectorAll(f11y.focusableElements));
             this.filterFocusableElements();
-            this.dialog.addEventListener( 'click', this.onLayerClick.bind(this), true );
 
             for (let i = 0; i < this.triggerNodes.length; i++) {
                 this.triggerNodes[i].addEventListener( 'click', this.openLayer.bind(this), true);
+            }
+
+            for (let i = 0; i < this.closeNodes.length; i++) {
+                this.closeNodes[i].addEventListener( 'click', this.closeLayer.bind(this), true);
             }
 
             for (let i = 0; i < this.focusableElements.length; i++) {
@@ -781,16 +786,16 @@ f11y.globalSettings = {
 
 
         filterFocusableElements(){
-            console.log(this.focusableElements);
+            let i = this.focusableElements.length;
 
-            for (let i = 0; i < this.focusableElements.length; i++) {
+            while(i--){
                 const element = this.focusableElements[i];
-                if(element.getBoundingClientRect().height === 0 && element.getBoundingClientRect().width === 0){
-                    console.log(element);
+                const closestHidden = element.closest('[aria-hidden]');
+
+                if(closestHidden != this.layer){
+                    this.focusableElements.splice(i, 1);
                 }
             }
-
-            console.log(this.focusableElements);
         }
 
         /**
@@ -892,7 +897,6 @@ f11y.globalSettings = {
 
                     layerNode.removeEventListener( 'animationend', handler );
                 }
-                
             }
 
             this.setFocusToFirstElement();
@@ -968,22 +972,6 @@ f11y.globalSettings = {
             this.layer = document.getElementById(targetLayer);
             if (this.layer){
                 this.closeLayer();
-            }
-        }
-
-        /**
-         * Checks on clicks within the layer
-         * @param {Event} event The event object that triggered the method
-         */
-        onLayerClick (event) {
-            if(this.options != undefined && this.options.closeTrigger != undefined){
-                const closeTrigger = this.options.closeTrigger;
-
-                if (event.target.hasAttribute(closeTrigger) || event.target.parentNode.hasAttribute(closeTrigger)) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    this.closeLayer(event)
-                }
             }
         }
 
