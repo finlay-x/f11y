@@ -14,6 +14,10 @@ lerna-debug.log*
 *.min.js
 *.min.js.map
 
+src/scss/
+demo/
+dist/styles/
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
