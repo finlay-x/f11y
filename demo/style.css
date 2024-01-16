@@ -125,10 +125,6 @@ button:hover{
     transform-origin: center center;
 }
 
-.f11y--tooltip button{
-    margin: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
 }
 
@@ -215,6 +211,8 @@ button:hover{
 
 table {
     border-collapse: collapse;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
 th{
@@ -231,7 +229,7 @@ td::before {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .3);
 }
 
 @media screen and (max-width: 767px) {

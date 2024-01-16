@@ -13,7 +13,7 @@
 
         <footer id="colophon" class="site-footer">
             <div class="content-width base-layout bp-white">
-                <p>f11y</p>
+                <img src="/f11y/demo/f11y-logo.svg" width="35">
             </div>
         </footer>
 

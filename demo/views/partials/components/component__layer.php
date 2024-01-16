@@ -48,10 +48,12 @@
 
                     <input type="text">
                     <button>fdsfd</button>
+                    <div>
+                        <button f11y-layer-close>Close</button>
+                    </div>
                 </main>
 
                 <footer>
-
                 </footer>
             </article>
         </div>

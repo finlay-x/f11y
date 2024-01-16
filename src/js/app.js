@@ -716,10 +716,8 @@ f11y.globalSettings = {
     f11y.Layer = class Layer {
 
         /**
-         * 
          * @param {HTMLElement | Element} domNode 
          * @param {Object} opts 
-
          */
         constructor (domNode, opts) {
             const DEFAULTS = {
@@ -730,6 +728,7 @@ f11y.globalSettings = {
                 openClass: 'is-open',
                 disableScroll: false,
                 disableFocus: false,
+                closeOnBackgroundClick: false,
                 awaitCloseAnimation: false,
                 awaitOpenAnimation: false,
             }
@@ -810,8 +809,6 @@ f11y.globalSettings = {
             this.focusableElements.forEach(function (element) {
                 if (element === newElement) {
                     newElement.focus();
-                } else {
-                    //Do Nothing, LeBron...
                 }
             })
         }
@@ -948,7 +945,9 @@ f11y.globalSettings = {
          */
         addGlobalListeners() {
             window.addEventListener('keydown', this.onWindowKeydownBound);
-            window.addEventListener('mousedown', this.onBackgroundMousedownBound);
+            if(this.options.closeOnBackgroundClick){
+                window.addEventListener('mousedown', this.onBackgroundMousedownBound);
+            }
         }
         
         /**
@@ -956,7 +955,9 @@ f11y.globalSettings = {
          */
         removeGlobalListeners() {
             window.removeEventListener('keydown', this.onWindowKeydownBound);
-            window.removeEventListener('mousedown', this.onBackgroundMousedownBound);
+            if(this.options.closeOnBackgroundClick){
+                window.removeEventListener('mousedown', this.onBackgroundMousedownBound);
+            }
         }
 
         /**
@@ -1333,6 +1334,11 @@ f11y.globalSettings = {
  * @class Tooltip
  */
     f11y.Tooltip = class Tooltip {
+
+        /**
+         * @param {HTMLElement | Element} domNode 
+         * @param {Object} opts 
+         */
         constructor(domNode, opts) {
             const DEFAULTS = {
                 onOpen: () => { },
@@ -1364,12 +1370,12 @@ f11y.globalSettings = {
             this.onTooltipKeydownBound = this.onTooltipKeydown.bind(this);
             this.onBackgroundMousedownBound = this.onBackgroundMousedown.bind(this);
 
-            this.domNode.addEventListener('mouseover', this.openTooltip.bind(this));
+            this.domNode.addEventListener('mouseenter', this.openTooltip.bind(this));
             this.domNode.addEventListener('touchstart', this.openTooltip.bind(this));
             this.domNode.addEventListener('focusin', this.onFocusin.bind(this));
             this.triggerNode.addEventListener('focusin', this.openTooltip.bind(this));
 
-            this.domNode.addEventListener('mouseout', this.closeTooltip.bind(this));
+            this.domNode.addEventListener('mouseleave', this.closeTooltip.bind(this));
             this.domNode.addEventListener('touchend', this.closeTooltip.bind(this));
             this.domNode.addEventListener('focusout', this.onFocusout.bind(this));
             this.triggerNode.addEventListener('focusout', this.closeTooltip.bind(this));
@@ -1383,27 +1389,69 @@ f11y.globalSettings = {
         }
 
         isOpen() {
-            return this.domNode.classList.contains(this.options.openClass) === 'true';
+            return this.domNode.classList.contains(this.options.openClass) === true;
         }
 
         openTooltip(){
             const domNode = this.domNode;
             const tooltipNode = this.tooltipNode;
+            const timer = this.timer;
 
-            domNode.classList.add('is-open');
             tooltipNode.classList.add('is-open');
-            
+
+            if (!this.isOpen() && this.options.awaitOpenAnimation) {
+                domNode.addEventListener('animationend', handler );
+                domNode.classList.add('is-animating', 'is-opening');
+                
+                function handler() {
+                    domNode.classList.remove('is-animating', 'is-opening');
+                    domNode.classList.add('is-open');
+                    clearTimeout(timer);
+
+                    domNode.removeEventListener(
+                        'animationend', 
+                        handler
+                    );
+                }
+            }else{
+                domNode.classList.add('is-open');
+                clearTimeout(timer);
+            }
+
             this.checkBoundingBox();
             this.addGlobalListeners();
         }
 
         closeTooltip(){
-            const domNode = this.domNode;
-            const tooltipNode = this.tooltipNode;
-
-            domNode.classList.remove('is-open');
-            tooltipNode.classList.remove('is-open');
-
+            if(this.isOpen()){
+                const domNode = this.domNode;
+                const tooltipNode = this.tooltipNode;
+                const openClass = this.options.openClass;
+    
+                if (this.options.awaitCloseAnimation) {
+                    this.timer = setTimeout(function(){
+                        domNode.addEventListener( 'animationend', handler );
+                        domNode.classList.add('is-animating', 'is-closing');
+    
+                        function handler() {
+                            domNode.classList.remove('is-animating', 'is-closing');
+                            domNode.classList.remove(openClass);
+                            tooltipNode.classList.remove(openClass);
+    
+                            domNode.removeEventListener(
+                                'animationend', 
+                                handler
+                            );
+                        }
+                    }, 750);
+                } else{
+                    this.timer = setTimeout(function(){
+                        domNode.classList.remove(openClass);
+                        tooltipNode.classList.remove(openClass);
+                    }, 750);
+                }
+            }
+            
             this.resetBoundingBox();
             this.removeGlobalListeners();
         }
