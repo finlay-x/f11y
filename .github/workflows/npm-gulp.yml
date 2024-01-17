@@ -30,7 +30,6 @@ jobs:
         git add -A
         git commit -m "Update dist scripts"
     - name: Push Changes
-      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
         force: true
