@@ -45,6 +45,8 @@ function js () {
 
 // CSS function
 function css () {
+    if(process.env.NODE_ENV == 'production') return;
+    
     const source = ['./src/scss/main.scss']
 
     return src(source, { sourcemaps: true })
