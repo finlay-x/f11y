@@ -29,10 +29,5 @@ jobs:
         git config --local user.name  ${{ github.actor }}
         git add -A
         git commit -m "Update dist scripts"
-    - name: Github Push
-      env: ${{ secrets.REPO_GITHUB_TOKEN }}
-      uses: ad-m/github-push-action@v0.8.0
-      with:
-        github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
-        force: true
+        git push
         
