@@ -45,7 +45,7 @@ function js () {
 
 // CSS function
 function css () {
-    if(process.env.NODE_ENV == 'production') return src('.');
+    if(process.env.NODE_ENV == 'production') return src('.', {"allowEmpty": true});
 
     const source = ['./src/scss/main.scss']
 

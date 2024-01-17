@@ -247,7 +247,7 @@ f11y.store = {
                 openClass: f11y.globalSettings.openClass,
                 triggerNodeSelector: 'button[aria-controls]',
                 dropdownNodeSelector: '[role="menu"]',
-                updateOnSelect: true,
+                updateOnSelect: false,
                 updateTargetSelector: '',
                 closeOnSelect: false,
                 awaitCloseAnimation: false,
@@ -291,6 +291,9 @@ f11y.store = {
             this.triggerNode.addEventListener( 'keydown', this.onTriggerKeydown.bind(this) );
             this.triggerNode.addEventListener( 'click', this.onTriggerClick.bind(this) );
 
+            this.options.updateTargetSelector ? this.options.updateTargetSelector : this.options.triggerNodeSelector;
+            this.updateTargetNode = document.querySelector(this.options.updateTargetSelector);
+
             const nodes = this.dropdownNode.querySelectorAll(f11y.focusableElements);
             for (let i = 0; i < nodes.length; i++) {
                 const dropdownItem = nodes[i];
@@ -311,9 +314,6 @@ f11y.store = {
 
                 this.lastDropdownItem = dropdownItem;
             }
-
-            this.options.updateTargetSelector ? this.options.updateTargetSelector : this.options.triggerNodeSelector;
-            this.updateTargetNode = document.querySelector(this.options.updateTargetSelector);
 
 
             this.domNode.addEventListener( 'focusin', this.onFocusin.bind(this) );
@@ -1242,7 +1242,8 @@ f11y.store = {
                 this.lastTab = tab;
             }
 
-            this.handleTabChange(this.firstTab);
+            this.setActiveTab(this.firstTab);
+            this.findActiveTabs();
         }
 
         /**
@@ -1258,8 +1259,22 @@ f11y.store = {
          * @param {Event | KeyboardEvent} event 
          */
         handleTabChange(targetTab, event) {
-            this.setSelectedTab(targetTab, event);
+            this.setActiveTab(targetTab);
+            this.findActiveTabs();
 
+            let tabIndex = this.tabs.indexOf(this.activeTab);
+            let nextTab = this.tabs[tabIndex + 1];
+            if(nextTab === undefined){
+                nextTab = this.activeTabs[0];
+            }
+            this.moveFocusToTab(nextTab);
+            this.options.onChange(event, this);
+        }
+
+        /**
+         * 
+         */
+        findActiveTabs(){
             this.activeTabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]:not([disabled])'));
             this.firstActiveTab = null;
 
@@ -1276,38 +1291,35 @@ f11y.store = {
             if(this.options.disableActiveTab === true){
                 this.activeTabs[0].removeAttribute('tabindex');
             }
-
-            this.options.onChange(event, this);
         }
 
         /**
-         * Sets the focus of the selected tabs etc
+         * 
          * @param {HTMLElement} targetTab 
          */
-        setSelectedTab(targetTab) {
-            let index;
+        setActiveTab(targetTab){
             for (let i = 0; i < this.tabs.length; i += 1) {
                 const tab = this.tabs[i];
+
                 if (targetTab.id === tab.id) {
+                    this.activeTab = this.tabs[i];
                     tab.setAttribute('aria-selected', 'true');
                     tab.removeAttribute('tabindex');
-                    this.tabpanels[i].classList.remove('is-visually-hidden');
                     this.tabpanels[i].removeAttribute('hidden');
 
                     if(this.options.disableActiveTab === true){
                         tab.setAttribute('disabled', '');
                         tab.tabIndex = -1;
-                        index = this.tabs.indexOf(targetTab);
                     }
-                } else {
+                }else{
                     tab.setAttribute('aria-selected', 'false');
                     tab.removeAttribute('disabled');
                     tab.tabIndex = -1;
-                    this.tabpanels[i].classList.add('is-visually-hidden');
                     this.tabpanels[i].setAttribute('hidden', '');
                 }
             }
         }
+
 
         /**
          * Moves focus to passed tab
