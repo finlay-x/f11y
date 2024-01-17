@@ -270,21 +270,28 @@ f11y.store = {
         }
 
         /**
+         * Checks if a HTML Element is undefined or null
+         * @param {Element} node Node to be checked
+         */
+        isset(node){
+            if (typeof(node) != 'undefined' && node != null) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        /**
          * Initialises the class component
          */
         init() {
             this.triggerNode = this.domNode.querySelector(this.options.triggerNodeSelector);
             this.dropdownNode = this.domNode.querySelector(this.options.dropdownNodeSelector);
 
-            this.options.updateTargetSelector ? this.options.updateTargetSelector : this.options.triggerNodeSelector;
-            console.log(this.options.updateTargetSelector);
-            this.updateTargetNode = document.querySelector(this.options.updateTargetSelector);
-
             this.triggerNode.addEventListener( 'keydown', this.onTriggerKeydown.bind(this) );
             this.triggerNode.addEventListener( 'click', this.onTriggerClick.bind(this) );
 
             const nodes = this.dropdownNode.querySelectorAll(f11y.focusableElements);
-
             for (let i = 0; i < nodes.length; i++) {
                 const dropdownItem = nodes[i];
                 this.dropdownItemNodes.push(dropdownItem);
@@ -304,6 +311,10 @@ f11y.store = {
 
                 this.lastDropdownItem = dropdownItem;
             }
+
+            this.options.updateTargetSelector ? this.options.updateTargetSelector : this.options.triggerNodeSelector;
+            this.updateTargetNode = document.querySelector(this.options.updateTargetSelector);
+
 
             this.domNode.addEventListener( 'focusin', this.onFocusin.bind(this) );
             this.domNode.addEventListener( 'focusout', this.onFocusout.bind(this) );
@@ -366,8 +377,8 @@ f11y.store = {
 
         /**
          * Sets focus to the previous menu item
-         * @param    {HTMLElement | Element}  currentDropdownItem  The currently focused item within the dropdown menu
-         * @returns  {HTMLElement | Element}                   The newly focused item within the dropdown menu
+         * @param    {HTMLElement | Element} currentDropdownItem The currently focused item within the dropdown menu
+         * @returns  {HTMLElement | Element} The newly focused item within the dropdown menu
          */
         setFocusToPreviousDropdownItem(currentDropdownItem) {
             let newDropdownItem, index;
@@ -387,8 +398,8 @@ f11y.store = {
 
         /**
          * Sets focus to the next menu item
-         * @param    {HTMLElement | Element}  currentDropdownItem  Currently focused item within the dropdown menu
-         * @returns  {HTMLElement | Element}                   The newly focused item within the dropdown menu
+         * @param    {HTMLElement | Element} currentDropdownItem Currently focused item within the dropdown menu
+         * @returns  {HTMLElement | Element} The newly focused item within the dropdown menu
          */
         setFocusToNextDropdownItem(currentDropdownItem) {
             let newDropdownItem, index;
@@ -407,8 +418,8 @@ f11y.store = {
 
         /**
          * Sets focus by the the first character of a menu item
-         * @param  {HTMLElement | Element}  currentDropdownItem  Currently focused item within the dropdown menu
-         * @param  {string}                 char             The character to base the focus on
+         * @param  {HTMLElement | Element} currentDropdownItem Currently focused item within the dropdown menu
+         * @param  {string} char The character to base the focus on
          */
         setFocusByFirstCharacter(currentDropdownItem, char) {
             let start, index;
@@ -437,7 +448,7 @@ f11y.store = {
 
         /**
          * Opens the dropdown
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         openDropdown(event) {
             const domNode = this.domNode;
@@ -468,7 +479,7 @@ f11y.store = {
 
         /**
          * Closes the dropdown
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         closeDropdown(event) {
             if (this.isOpen()) {
@@ -521,7 +532,7 @@ f11y.store = {
 
         /**
          * Handles all Trigger toggle keyboard events
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         onTriggerKeydown(event) {
             const key = event.key;
@@ -576,7 +587,7 @@ f11y.store = {
 
         /**
          * Handles Trigger toggle click event
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         onTriggerClick(event) {
             if (this.isOpen()) {
@@ -594,7 +605,7 @@ f11y.store = {
 
         /**
          * Handles all keyboard events on the menu items
-         * @param  {KeyboardEvent}  event  The event that triggered this method
+         * @param  {KeyboardEvent} event The event that triggered this method
          */
         onDropdownItemKeydown(event) {
             const tgt = event.currentTarget;
@@ -683,7 +694,7 @@ f11y.store = {
 
         /**
          * Handles hover event for menu items
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         onDropdownItemMouseover(event) {
             const tgt = event.currentTarget;
@@ -692,7 +703,7 @@ f11y.store = {
 
         /**
          * Handles click events on menu items
-         * @param  {Event|KeyboardEvent}  event  The event that triggered this method
+         * @param  {Event|KeyboardEvent} event The event that triggered this method
          */
         onDropdownItemClick(event) {
             if (this.options.updateOnSelect === true) {
@@ -734,7 +745,7 @@ f11y.store = {
 
         /**
          * Handles click events that are outside of the dropdown remit
-         * @param  {Object}  event  The event that triggered this method
+         * @param  {Object} event The event that triggered this method
          */
         onBackgroundMousedown(event) {
             if (!this.domNode.contains(event.target)) {
@@ -761,6 +772,20 @@ f11y.store = {
          * @param {Object} opts 
          */
         constructor (domNode, opts) {
+
+            /**
+             * @typedef {Object} LayerDefault
+             * @property {Function} onOpen - Function called once item is opened
+             * @property {Function} onClose - Function called once item closed
+             * @property {string} openTrigger - 
+             * @property {string} closeTrigger - 
+             * @property {string} openClass - 
+             * @property {boolean} disableScroll - 
+             * @property {boolean} closeOnBackgroundClick -
+             * @property {boolean} awaitCloseAnimation - 
+             * @property {boolean} awaitOpenAnimation - 
+             */
+
             const DEFAULTS = {
                 onOpen: () => { },
                 onClose: () => { },
@@ -773,16 +798,14 @@ f11y.store = {
                 awaitOpenAnimation: false,
             }
 
+            /** @type {LayerDefault} */
             this.options = Object.assign(DEFAULTS, opts);
 
+            /** @type {Element | HTMLElement} */
             this.layer = domNode;
-            this.id = null;
-            this.dialog = null;
-            this.triggerNodes = null;
-            this.closeNodes = null;
-            this.focusableElements = null;
-            this.firstElement = false;
-            this.lastElement = false;
+
+            /** @type {string} */
+            this.id = '';
 
             this.init();
         }
@@ -1163,32 +1186,43 @@ f11y.store = {
  * @class TabList
  */
     f11y.TabList = class TabList {
+
+        /**
+         * @param {HTMLElement | Element} domNode 
+         * @param {Object} opts 
+         */
         constructor(domNode, opts) {
+            /**
+             * @typedef {Object} TabListDefault
+             * @property {Function} onChange - Function called once item is opened
+             * @property {string} orientation - 
+             * @property {boolean} disableActiveTab - 
+             */
+
             const DEFAULTS = {
                 onChange: () => { },
                 orientation: 'horizontal',
                 disableActiveTab: true
             }
 
+            /** @type {TabListDefault} */
             this.options = Object.assign(DEFAULTS, opts);
 
             this.tablistNode = domNode;
-            this.firstTab = null;
-            this.firstActiveTab = null;
-            this.lastTab = null;
-            this.lastActiveTab = null;
-            this.tabs = [];
-            this.activeTabs = [];
-            this.tabpanels = [];
-            this.tabList = [];
 
             this.init();
         }
 
+        /**
+         * Initialises the class component
+         */
         init(){
             this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
             this.activeTabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]:not([disabled])'));
             this.tabList = this.tablistNode.querySelector('[role="tablist"]');
+
+            /** @type {Array<HTMLElement>} */
+            this.tabpanels = [];
 
             for (let i = 0; i < this.tabs.length; i += 1) {
                 const tab = this.tabs[i];
@@ -1211,14 +1245,18 @@ f11y.store = {
             this.handleTabChange(this.firstTab);
         }
 
+        /**
+         * Refreshes the class component and calls init() and does any necessary resets
+         */
         refresh() {
-            this.tabs = [];
-            this.activeTabs = [];
-            this.tabpanels = [];
-            this.tabList = [];
             this.init();
         }
 
+        /**
+         * Handles Change a tab
+         * @param {HTMLElement} targetTab 
+         * @param {Event | KeyboardEvent} event 
+         */
         handleTabChange(targetTab, event) {
             this.setSelectedTab(targetTab, event);
 
@@ -1242,6 +1280,10 @@ f11y.store = {
             this.options.onChange(event, this);
         }
 
+        /**
+         * Sets the focus of the selected tabs etc
+         * @param {HTMLElement} targetTab 
+         */
         setSelectedTab(targetTab) {
             let index;
             for (let i = 0; i < this.tabs.length; i += 1) {
@@ -1267,10 +1309,18 @@ f11y.store = {
             }
         }
 
+        /**
+         * Moves focus to passed tab
+         * @param {HTMLElement} targetTab 
+         */
         moveFocusToTab(targetTab) {
             targetTab.focus();
         }
 
+        /**
+         * Moves focus to previous tab
+         * @param {HTMLElement} targetTab 
+         */
         moveFocusToPreviousTab(targetTab) {
             let index = this.activeTabs.indexOf(targetTab);
 
@@ -1281,6 +1331,10 @@ f11y.store = {
             }
         }
 
+        /**
+         * Moves focus to Next tab
+         * @param {HTMLElement} targetTab 
+         */
         moveFocusToNextTab(targetTab) {
             let index = this.activeTabs.indexOf(targetTab);
 
@@ -1291,7 +1345,10 @@ f11y.store = {
             }
         }
 
-        /* EVENT HANDLERS */
+        /**
+         * Handles keydown events on tabs
+         * @param {KeyboardEvent} event 
+         */
         onKeydown(event) {
             const tgt = event.currentTarget;
             let flag = false;
@@ -1345,6 +1402,10 @@ f11y.store = {
             }
         }
 
+        /**
+         * Handles click events
+         * @param {Event} event 
+         */
         onClick(event) {
             this.handleTabChange(event.currentTarget, event);
         }

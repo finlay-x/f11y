@@ -25,7 +25,7 @@ const gulpEsbuild = createGulpEsbuild({
 
 // Clean assets
 function clear () {
-    return del(['dist/scripts/**/*', 'dist/styles/**/*']);
+    return process.env.NODE_ENV == 'development' ? del(['assets/scripts/**/*', 'assets/styles/**/*']) : del(['dist/scripts/**/*', 'dist/styles/**/*']);
 }
 
 // JS function
@@ -40,7 +40,7 @@ function js () {
                 outfile: 'f11y.min.js'
             })
         )
-        .pipe(dest('dist/scripts/'));
+        .pipe(process.env.NODE_ENV == 'development' ? dest('assets/scripts/') : dest('dist/scripts/'));
 }
 
 // CSS function
@@ -56,7 +56,7 @@ function css () {
             ])
         )
         .pipe(rename({ basename: "f11y", extname: '.min.css' }))
-        .pipe(dest('dist/styles/', { sourcemaps: '.' }));
+        .pipe(dest('assets/styles/', { sourcemaps: '.' }));
 }
 
 // Setup Browsersync, requires XAMPP (or some PHP/Apache setup) to proxy for the PHP files
@@ -76,10 +76,12 @@ function browsersyncReload (cb) {
 // Watch files
 function watchFiles () {
     if(browsersync.active){
+        watch('**/*.html', browsersyncReload);
         watch('**/*.php', browsersyncReload);
         watch('./src/scss/**/*.scss', series(css, browsersyncReload));
         watch('./src/js/**/*.js', series(js, browsersyncReload));
     } else{
+        watch('**/*.html', browsersyncReload);
         watch('**/*.php');
         watch('./src/scss/**/*.scss', css);
         watch('./src/js/**/*.js', js);
@@ -89,7 +91,7 @@ function watchFiles () {
 // Export Functions as Gulp tasks
 exports.watch = series(clear, parallel(js, css), watchFiles);
 exports.watch_browsersync = series(clear, browsersyncServe, parallel(js, css), watchFiles);
-exports.production = series(clear, js, css, (done) => {
+exports.build = series(clear, js, css, (done) => {
     //Force the node process to exit once task is done
     done();
     process.exit(0);

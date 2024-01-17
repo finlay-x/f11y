@@ -4,9 +4,10 @@
     "description": "JS Functionality Patterns",
     "main": "gulpfile.js",
     "scripts": {
-        "production": "gulp production",
-        "watch": "gulp watch",
-        "watch:browsersync": "gulp watch_browsersync",
+        "production": "cross-env NODE_ENV=production gulp build",
+        "development": "cross-env NODE_ENV=development gulp build",
+        "watch": "cross-env NODE_ENV=development gulp watch",
+        "watch:browsersync": "cross-env NODE_ENV=development gulp watch_browsersync",
         "sizes": "gzip-size dist/scripts/f11y.min.js --include-original"
     },
     "repository": {
@@ -17,6 +18,7 @@
     "devDependencies": {
         "autoprefixer": "^10.4.15",
         "browser-sync": "^2.29.3",
+        "cross-env": "^7.0.3",
         "cssnano": "^6.0.1",
         "del": "6.1.1",
         "gulp": "^4.0.2",
