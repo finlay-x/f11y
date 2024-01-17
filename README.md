@@ -1,7 +1,11 @@
 > ⚠️ f11y is still in a alpha state - improvements, optimisations and features are still being actively working on. Please expect breaking changes and bugs.
 
-<h1 align="center">f11y</h1>
-<p align="center">A barebones collection of w3c accessible JavaScript functionality components, with zero dependencies. Weighing in at just 6kb min.gz'd</p>
+
+</br>
+<h1 align="center">
+    <img alt="f11y" title="f11y" src="https://i.ibb.co/SBY4fXL/f11y-logo.png">
+</h1>
+<p align="center">f11y is a barebones collection of w3c accessible JavaScript functionality components, with zero dependencies. Weighing in at just 6kb min.gz'd</p>
 
 ## Installation
 Simple, just add the the f11y `<script>` at the end of your document.

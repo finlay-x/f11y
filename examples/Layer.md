@@ -3,22 +3,22 @@
 
 ## Example HTML Markup
 ```html
-    <div id="layer-1" class="f11y--layer" aria-hidden="true">
-        <div role="dialog" aria-modal="true" aria-labelledby="layer-title">
-            <article>
-                <header>
-                    <h3 id="layer-title">Layer Title</h2>
-                </header>
+<div id="layer-1" class="f11y--layer" aria-hidden="true">
+    <div role="dialog" aria-modal="true" aria-labelledby="layer-title">
+        <article>
+            <header>
+                <h3 id="layer-title">Layer Title</h2>
+            </header>
 
-                <main></main>
+            <main></main>
 
-                <footer>
-                    <button f11y-layer-close="layer-1">Open Layer</button>
-                </footer>
-            </article>
-        </div>
+            <footer>
+                <button f11y-layer-close="layer-1">Open Layer</button>
+            </footer>
+        </article>
     </div>
-    <button f11y-layer-open="layer-1">Open Layer</button>
+</div>
+<button f11y-layer-open="layer-1">Open Layer</button>
 ```
 * Every layer must have a unique `id` & `aria-hidden="true"`.
 * You must pass the above `id` to `f11y-layer-open` & `f11y-layer-close` attributes. 
@@ -27,21 +27,21 @@
 
 ## JS Initialisation
 ```js
-    const layer = document.querySelector(".f11y--layer");
-    new f11y.Layer(
-        layer,
-        {   //Optional Configuration Object
-            onOpen: () => { }, //[1]
-            onClose: () => { }, //[2]
-            openTrigger: 'f11y-layer-open', //[3]
-            closeTrigger: 'f11y-layer-close', //[4]
-            openClass: 'is-open', //[5]
-            disableScroll: true, //[6]
-            closeOnBackgroundClick: true, //[7]
-            awaitCloseAnimation: false, //[8]
-            awaitOpenAnimation: false, //[9]
-        }
-    );
+const layer = document.querySelector(".f11y--layer");
+new f11y.Layer(
+    layer,
+    {   //Optional Configuration Object
+        onOpen: () => { }, //[1]
+        onClose: () => { }, //[2]
+        openTrigger: 'f11y-layer-open', //[3]
+        closeTrigger: 'f11y-layer-close', //[4]
+        openClass: 'is-open', //[5]
+        disableScroll: true, //[6]
+        closeOnBackgroundClick: true, //[7]
+        awaitCloseAnimation: false, //[8]
+        awaitOpenAnimation: false, //[9]
+    }
+);
 ```
 |  | Name | Type | Description |
 |---|---|---|---|

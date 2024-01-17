@@ -3,25 +3,25 @@
 
 ## Example HTML Markup
 ```html
-    <div class="f11y--accordion">
-        <div class="f11y--accordion__item">
-            <button id="trigger-1" type="button" aria-expanded="false" aria-controls="panel-1">
-                Accordion Item 1
-            </button>
-            <div id="panel-1" role="region" aria-labelledby="trigger-1" hidden>
-                <p>Accordion Panel Content 1</p>
-            </div>
-        </div>
-
-        <div class="f11y--accordion__item">
-            <button id="trigger-2" type="button" aria-expanded="false" aria-controls="panel-2" >
-                Accordion Item 2
-            </button>
-            <div id="panel-2" role="region" aria-labelledby="trigger-2" hidden>
-                <p>Accordion Panel Content 2</p>
-            </div>
+<div class="f11y--accordion">
+    <div class="f11y--accordion__item">
+        <button id="trigger-1" type="button" aria-expanded="false" aria-controls="panel-1">
+            Accordion Item 1
+        </button>
+        <div id="panel-1" role="region" aria-labelledby="trigger-1" hidden>
+            <p>Accordion Panel Content 1</p>
         </div>
     </div>
+
+    <div class="f11y--accordion__item">
+        <button id="trigger-2" type="button" aria-expanded="false" aria-controls="panel-2" >
+            Accordion Item 2
+        </button>
+        <div id="panel-2" role="region" aria-labelledby="trigger-2" hidden>
+            <p>Accordion Panel Content 2</p>
+        </div>
+    </div>
+</div>
 ```
 * If you want to have an item open by default, remove the `hidden` attribute and set the `aria-expanded` to true.
 * The `aria-controls` must match the `id` of the corresponding panel. 
@@ -30,16 +30,16 @@
 
 ## JS Initialisation
 ```js
-    const accordion = document.querySelector(".f11y--accordion");
-    new f11y.Accordion(
-        accordion,
-        {   //Optional Configuration Object
-            onOpen : (item, event, accordion) => { }, //[1]
-            onClose: (item, event, accordion) => { }, //[2]
-            itemClass: 'f11y--accordion__item', //[3]
-            showMultiple: true //[4]
-        }
-    );
+const accordion = document.querySelector(".f11y--accordion");
+new f11y.Accordion(
+    accordion,
+    {   //Optional Configuration Object
+        onOpen : (item, event, accordion) => { }, //[1]
+        onClose: (item, event, accordion) => { }, //[2]
+        itemClass: 'f11y--accordion__item', //[3]
+        showMultiple: true //[4]
+    }
+);
 ```
 |  | Name | Type | Description |
 |---|---|---|---|
