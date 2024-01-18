@@ -33,7 +33,7 @@
 const accordion = document.querySelector(".f11y--accordion");
 new f11y.Accordion(
     accordion,
-    {   //Optional Configuration Object
+    {   //Optional Configuration Object Defaults
         onOpen : (item, event, accordion) => { }, //[1]
         onClose: (item, event, accordion) => { }, //[2]
         itemClass: 'f11y--accordion__item', //[3]
@@ -47,3 +47,6 @@ new f11y.Accordion(
 | 2. | onClose | `function` | Fired when accordion item is closed. Receives the item object, the event that triggered it, and the accordion object as parameters. |
 | 3. | itemClass | `string` | A valid class name that will be used to discover accordion items. |
 | 4. | showMultiple | `boolean` | Decides whether to allow multiple items within the accordion to be opened at once. |
+
+---
+[⬅️ PREV](/Tooltips.md) | [NEXT ➡️](/Dropdown.md)

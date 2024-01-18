@@ -1,11 +1,12 @@
 {
     "name": "f11y",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
     "main": "umd/f11y.js",
     "cdn": "umd/f11y.min.js",
     "module": "umd/f11y.es.js",
     "type":"module",
+    "types": "umd/index.d.ts",
     "files": [
         "/umd"
     ],

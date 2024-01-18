@@ -3,7 +3,7 @@
 
 </br>
 <h1 align="center">
-    <img alt="f11y" width="1280" title="f11y" src="https://i.ibb.co/Lx565K8/f11y-header.jpg">
+    <img alt="f11y, A functionality component library for pure JavaScript" width="1280" title="f11y" src="https://i.ibb.co/Bcw2YM2/f11y-header.jpg">
 </h1>
 <p align="center"><strong><em>f11y</em></strong> is a barebones collection of accessible JavaScript functionality components, with zero dependencies. <br><strong>Weighing in at just <em>6kb min.gz'd</em></strong></p>
 
@@ -25,7 +25,7 @@ npm install f11y --save
 ## f11y is ***not*** a UI framework.
 * **Zero styling choices are made for you.** This library is 100% styling agnostic, our examples folder has some example CSS if you want a starting point.
 * **We leave the UX up to you.** UI frameworks often differentiate components based on their intended UX. For example a 'Modal' and a 'Alert Dialog' may be different components. f11y does not do this, it provides you with the base functionality, *creating the proper UX is left to you.*
-* **We don't provide passive components.** This means any component you may find in a UI framework, such as 'Cards', 'Avatars', 'Seperators' etc... that only need HTML & CSS and have no inherent/required user interactivity are not part of f11y.
+* **We don't provide passive components.** This means any component you may find in a UI framework that only need HTML & CSS, such as 'Cards', 'Avatars', 'Seperators' etc... and have no inherent/required user interactivity are not part of f11y.
 
 ### So what does f11y do and why would I use it...?
 *f11y simply provides you with base functionality for creating fantastic and accessible UX, suitable for 90% of use cases and without the overhead or complexities many UI frameworks bring.*
@@ -41,7 +41,7 @@ npm install f11y --save
 
 ✔️ Dropdowns (Dropdowns, Comboboxes, popovers)
 
-✔️ Tabs/Tablists
+✔️ Tabs/Tablist
 
 ✔️ Responsive Tables
 
@@ -51,18 +51,18 @@ npm install f11y --save
 
 
 ### General Initialisation
-All f11y componets are initialised in a similar way and usually follow this pattern:
+All f11y components are initialised in a similar way and usually follow this pattern:
 ```js
 const componentElement = document.querySelector(".my-component");
 new f11y.ComponentName(componentElement, configObject); // Config is optional in all components
 ```
-***Please refer to our examples folder for full details on HTML Markup and config options for each component***
+**[Please refer to our examples folder for full details on HTML Markup and config options for each component](examples/Accordion.md)**
 
 ## Roadmap
 #### V0.1 Release
 - [ ] Feature: Implement Toasts
 - [ ] Feature: Implement Custom Input Sliders
-- [ ] Documentation: Finish JSDoc & Typescript Documentation
+- [ ] Documentation: Finish JSDoc & Documentation
 
 #### V0.2 Release
 - [ ] Feature: Implement Search on Dropdown

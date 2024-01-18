@@ -21,7 +21,7 @@
 <button f11y-layer-open="layer-1">Open Layer</button>
 ```
 * Every layer must have a unique `id` & `aria-hidden="true"`.
-* You must pass the above `id` to `f11y-layer-open` & `f11y-layer-close` attributes. 
+* The layer `id` must match any `f11y-layer-open` & `f11y-layer-close` attributes. 
 * The inner container/content area of your layer must have the attribute `role="dialog"`
 
 
@@ -30,7 +30,7 @@
 const layer = document.querySelector(".f11y--layer");
 new f11y.Layer(
     layer,
-    {   //Optional Configuration Object
+    {   //Optional Configuration Object Defaults
         onOpen: () => { }, //[1]
         onClose: () => { }, //[2]
         openTrigger: 'f11y-layer-open', //[3]
@@ -66,3 +66,5 @@ new f11y.Layer(
     display: block;
 }
 ```
+---
+[⬅️ PREV](/Dropdown.md) | [NEXT ➡️](/TabList.md)

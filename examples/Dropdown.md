@@ -27,7 +27,7 @@
 const dropdown = document.querySelector(".f11y--dropdown");
 new f11y.Dropdown(
     dropdown,
-    {   //Optional Configuration Object
+    {   //Optional Configuration Object Defaults
         onOpen: () => {}, //[1]
         onClose: () => {}, //[2]
         openClass: 'is-open', //[3]
@@ -70,3 +70,5 @@ new f11y.Dropdown(
     display: block;
 }
 ```
+---
+[⬅️ PREV](/Accordion.md) | [NEXT ➡️](/Layer.md)
