@@ -1,0 +1,46 @@
+{
+    "name": "f11y",
+    "version": "0.0.3",
+    "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
+    "main": "umd/f11y.js",
+    "cdn": "umd/f11y.min.js",
+    "module": "umd/f11y.es.js",
+    "type":"module",
+    "files": [
+        "/umd"
+    ],
+    "jsdelivr": "umd/f11y.min.js",
+    "author": "Finlay",
+    "license": "GNU GPL",
+    "repository": "https://github.com/finlay-x/f11y",
+    "bugs": {
+        "url": "https://github.com/finlay-x/f11y/issues"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "rollup -c -w",
+        "build": "rollup -c",
+        "deploy": "npm run build && npm publish",
+        "sync": "cp -rf ../Readme.md ./"
+    },
+    "keywords": [
+        "accessible",
+        "accordion"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
+    "devDependencies": {
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-json": "^6.1.0",
+        "rollup": "^4.0.0",
+        "rollup-plugin-filesize": "^10.0.0",
+        "@rollup/plugin-eslint": "^9.0.5",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@babel/core": "^7.23.7",
+        "@babel/preset-env": "^7.23.8",
+        "@babel/eslint-parser": "^7.23.3"
+    }
+}
+
+

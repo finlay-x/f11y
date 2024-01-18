@@ -1,11 +1,14 @@
 {
+    "include": [
+        "**/*.js"
+    ],
     "compilerOptions": {
         "target": "ES6",
         "lib": ["esnext", "dom"],
         "allowJs": true,
         "declaration": true,
         "emitDeclarationOnly": true,
-        "outDir": "dist/scripts",
+        "outDir": "umd/",
         "checkJs": true,
         "strict": true
     }
