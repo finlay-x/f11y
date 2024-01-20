@@ -1,0 +1,74 @@
+@use "../../helpers/variables" as v;
+@use 'helpers/mixins' as m;
+
+table.component-table{
+    border-collapse: collapse;
+
+    caption{
+        font-size: var(--normal-heading);
+        @include m.heading;
+    }
+
+    th,
+    td {
+        padding: 1rem;
+    }
+
+    th {
+        background-color: v.$bp-black;
+        color: v.$bp-white;
+    }
+
+    td::before {
+        display: none;
+    }
+
+    tr:nth-child(even){
+        background-color: rgba(v.$bp-black, 0.035);
+    }
+}
+
+
+$tablet-breakpoint: v.$tablet-size * 1px;
+
+@media screen and (max-width: $tablet-breakpoint) {
+    table.component-table{
+        display: block;
+
+        caption{
+            background-color: v.$bp-black;
+            color: v.$bp-white;
+            padding: 1rem;
+        }
+
+        tr{
+            padding: 0.5rem 1rem;
+            margin: 0 0 .67rem;
+            border: 1px solid rgba(v.$bp-black, 0.085);
+        }
+
+        tr,
+        td {
+            display: block;
+        }
+
+        th,
+        thead {
+            display: none;
+        }
+
+        td {
+            border-bottom: 1px solid rgba(v.$bp-black, 0.085);
+
+            &::before{
+                display: inline-block;
+                font-weight: 700;
+                margin-right: 0.5rem;
+            }
+
+            &:last-child{
+                border: 0;
+            }
+        }
+    }
+}

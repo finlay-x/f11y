@@ -1,0 +1,19 @@
+@use 'helpers/variables' as v;
+@use 'typography' as t;
+@use 'helpers/mixins' as m;
+@use 'helpers/classes' as c;
+@use 'helpers/functions' as f;
+
+.entry-content > article > *:not(.full-width):not(header) {
+    @include m.content-width;
+    @include m.base-layout;
+}
+
+.entry-content > article > .tablet-width {
+    @include m.tablet-width;
+    @include m.base-layout;
+}
+
+.entry-content > article > .section-container {
+    margin-top: clamp(2.5rem,10vw,5rem);
+}

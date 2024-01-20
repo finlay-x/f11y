@@ -1,0 +1,45 @@
+@use 'helpers/variables' as v;
+@use "sass:math";
+
+/* ------------------------------------------------
+    1. Functions used to build a custom clamp() function that can take in PX values and return REMS
+    2. round() rounds any float to 2 decinmel places
+    3. px-to-rem() converts a PX value to a REM value
+-------------------------------------------------*/
+/* Set default breakpoint px values */
+$default-min-bp: v.$mobile-breakpoint * 1px;
+$default-max-bp: v.$desktop-breakpoint * 1px;
+
+/* Define round() function */
+@function round($number, $decimals: 0) {
+    $n: 1;
+    @if $decimals > 0 {
+        @for $i from 1 through $decimals {
+            $n: $n * 10;
+        }
+    }
+    @return math.div(math.round($number * $n), $n);
+}
+
+/* Define px-to-rem() function */
+@function px-to-rem($px) {
+    $rems: math.div($px, 16px) * 1rem;
+    @return $rems;
+} 
+
+/* Define scssClamp() function */
+/* Usage example: scssClamp(20px,40px) -- Breakpoint values are optional but custom values can be passed*/
+@function scssClamp($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp) {
+    /* Return early if sizes are the same */
+    @if $min-size == $max-size {
+        @return $min-size;
+    }
+
+    $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+    $slope-to-unit: $slope * 100;
+    $intercept-rem: px-to-rem($min-size - $slope * $min-breakpoint);
+    $min-size-rem: px-to-rem($min-size);
+    $max-size-rem: px-to-rem($max-size);
+
+    @return clamp(#{$min-size-rem}, #{$slope-to-unit}vw + #{$intercept-rem}, #{$max-size-rem});
+}

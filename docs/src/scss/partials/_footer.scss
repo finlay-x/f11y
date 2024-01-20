@@ -1,0 +1,10 @@
+@use "helpers/variables" as v;
+@use "core/typography" as t;
+@use "helpers/classes" as c;
+@use "helpers/mixins" as m;
+
+#colophon{
+    margin-top: clamp(2.5rem,10vw,5rem);
+    padding: 2rem;
+    background-color: v.$bp-black;
+}

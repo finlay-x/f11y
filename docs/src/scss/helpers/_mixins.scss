@@ -1,0 +1,39 @@
+@use 'helpers/variables' as v;
+@use 'helpers/functions' as f;
+
+/* ------------------------------------------------
+    Typography
+-------------------------------------------------*/
+/* Typography Base */
+@mixin heading {
+    font-family: v.$heading-font;
+    font-style: normal;
+    color: rgba(v.$bp-black,1);
+    margin: .3rem 0 .67rem;
+}
+
+@mixin body {
+    font-family: v.$body-font;
+    line-height: 150%;
+    color:rgba(v.$bp-black,1);
+    font-weight: 300;
+}
+
+/* ------------------------------------------------
+    Layout
+-------------------------------------------------*/
+@mixin content-width {
+    width: 100%;
+    max-width: calc(v.$desktop-breakpoint * 1px);
+}
+
+@mixin tablet-width {
+    width: 100%;
+    max-width: calc(v.$desktop-breakpoint * 1px);
+}
+
+@mixin base-layout {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}

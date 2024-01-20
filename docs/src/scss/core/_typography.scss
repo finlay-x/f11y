@@ -1,0 +1,84 @@
+@use 'helpers/variables' as v;
+@use 'helpers/mixins' as m;
+@use 'helpers/classes' as c;
+@use 'helpers/functions' as f;
+@use "sass:map";
+
+
+/* ------------------------------------------------
+    Heading Typography
+-------------------------------------------------*/
+/* Base Heading Stying */
+h1, h2, h3, h4, h5, h6{
+    @include m.heading;
+}
+
+/* Generate/apply heading sizes, classes and CSS properties */
+@each $label, $size in v.$heading-sizes {
+    $levels: ("h1", "h2", "h3", "h4", "h5", "h6");
+
+    $slug : map.get($size, "slug");
+    $mobile : map.get($size, "mobile");
+    $desktop : map.get($size, "desktop");
+
+    #{$label}{
+        font-size: #{f.scssClamp($mobile , $desktop)};
+    }
+    .#{$slug}-h,
+    .#{$slug}-h > #{$label}{
+        font-size: #{f.scssClamp($mobile , $desktop)};
+    }
+
+    :root{
+        --#{$slug}-heading: #{f.scssClamp($mobile , $desktop)};
+    }
+
+    @each $level in $levels {
+        @if $label != $level {
+            #{$level}.#{$slug}-h,
+            .#{$slug}-h > #{$level}{
+                font-size: #{f.scssClamp($mobile , $desktop)};
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------
+    Body Typography
+-------------------------------------------------*/
+/* Base body styling */
+p,
+button,
+ul,
+ol,
+li,
+label,
+input,
+select,
+small,
+legend,
+textarea,
+details,
+summary,
+blockquote,
+span {
+    @include m.body;
+}
+
+/* Generate/apply body sizes/classes and CSS properties */
+@each $label, $size in v.$body-sizes {
+
+    $mobile : map.get($size, "mobile");
+    $desktop : map.get($size, "desktop");
+
+    
+    .#{$label}-b,
+    .#{$label}-b *{
+        font-size: #{f.scssClamp($mobile , $desktop)};
+    }
+
+    :root{
+        --#{$label}-body: #{f.scssClamp($mobile , $desktop)};
+    }
+}

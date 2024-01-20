@@ -1,0 +1,121 @@
+/* ------------------------------------------------
+    Breakpoints
+-------------------------------------------------*/
+$mobile-breakpoint: 400;
+$desktop-breakpoint: 1200;
+$tablet-size: calc($desktop-breakpoint - $mobile-breakpoint);
+
+
+/* ------------------------------------------------
+    Typography
+-------------------------------------------------*/
+/* Fonts */
+$heading-font: 'Trebuchet MS' , sans-serif;
+$body-font: 'Arial' , sans-serif;
+
+/* Font Sizes */
+$heading-sizes: (
+    "h1" : (
+        "slug" : "h",
+        "mobile" : 45px,
+        "desktop" : 66px,
+    ),
+    "h2" : (
+        "slug" : "x-l",
+        "mobile" : 38px,
+        "desktop" : 55px
+    ),
+    "h3" : (
+        "slug" : "l",
+        "mobile" : 31px,
+        "desktop" : 46px
+    ),
+    "h4" : (
+        "slug" : "m",
+        "mobile" : 26px,
+        "desktop" : 38px
+    ),
+    "h5" : (
+        "slug" : "n",
+        "mobile" : 22px,
+        "desktop" : 32px
+    ),
+    "h6" : (
+        "slug" : "s",
+        "mobile" : 18px,
+        "desktop" : 26px
+    )
+);
+
+$body-sizes: (
+    "h" : (
+        "mobile" : 27px,
+        "desktop" : 33px,
+    ),
+    "x-l" : (
+        "mobile" : 23px,
+        "desktop" : 27px
+    ),
+    "l" : (
+        "mobile" : 19px,
+        "desktop" : 24px
+    ),
+    "m" : (
+        "mobile" : 16px,
+        "desktop" : 20px
+    ),
+    "n" : (
+        "mobile" : 16px,
+        "desktop" : 16px
+    ),
+    "s" : (
+        "mobile" : 14px,
+        "desktop" : 14px
+    )
+);
+
+/* Font Weights */
+$weight-thin: 100;
+$weight-x-light: 200;
+$weight-light: 300;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semi-bold : 600; 
+$weight-bold: 700;
+$weight-x-bold: 800;
+$weight-heavy: 900;
+
+$default-weight: $weight-regular;
+$strong-weight: $weight-semi-bold;
+
+/* SCSS Weight Map */
+$font-weights: (
+    "weight-thin" : $weight-thin,
+    "weight-x-light" : $weight-x-light,
+    "weight-light" : $weight-light,
+    "weight-regular" : $weight-regular,
+    "weight-medium" : $weight-medium,
+    "weight-semi-bold" : $weight-semi-bold,
+    "weight-bold" : $weight-bold,
+    "weight-x-bold" : $weight-x-bold,
+    "weight-heavy" : $weight-heavy
+);
+
+
+/* ------------------------------------------------
+    Colours
+-------------------------------------------------*/
+$bp-black: #000000;
+$bp-white: #FFFFFF;
+
+/* SCSS Colours Maps */
+$colours: (
+    bp-black: $bp-black,
+    bp-white: $bp-white
+);
+
+
+/* ------------------------------------------------
+    Other/Misc
+-------------------------------------------------*/
+$timing-function: cubic-bezier(.4,0,.6,1);

@@ -1,0 +1,24 @@
+@use "helpers/variables" as v;
+@use "core/typography" as t;
+@use "helpers/classes" as c;
+@use "helpers/mixins" as m;
+
+header#masthead{
+    background-color: v.$bp-black;
+    color: v.$bp-white;
+    padding-block: 2rem;
+}
+
+.js-enabled #masthead,
+.js-enabled #masthead.sticky {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: transform .3s v.$timing-function;
+    z-index: 50;
+}
+
+.js-enabled #masthead.sticky.hide {
+    transform: translateY(-100%);
+}

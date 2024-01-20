@@ -1,0 +1,94 @@
+@use "../../helpers/variables" as v;
+
+.block-modal {
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+
+    .block-modal__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(v.$bp-black, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .block-modal__container {
+        background-color: v.$bp-white;
+        width: 100%;
+        max-width: calc(v.$tablet-size * 1px);
+        max-height: 100vh;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+
+    .block-modal__inner-container {
+        padding: 1rem;
+    }
+
+    &.block-modal--animate .block-modal__container,
+    &.block-modal--animate .block-modal__overlay {
+        will-change: transform;
+    }
+
+    /* ------------------------------------------------
+        Animation Modifier Classes
+    -------------------------------------------------*/
+    &.block-modal--animate-slide[aria-hidden="false"] .block-modal__container {
+        animation: block-modal--slide-in .4s v.$timing-function;
+    }
+    
+    &.block-modal--animate-slide[aria-hidden="true"] .block-modal__container {
+        animation: block-modal--slide-out .4s v.$timing-function;
+    }
+    
+    &.block-modal--animate-fade[aria-hidden="false"] .block-modal__overlay {
+        animation: block-modal--fade-in .4s v.$timing-function;
+    }
+    
+    &.block-modal--animate-fade[aria-hidden="true"] .block-modal__overlay {
+        animation: block-modal--fade-out .4s v.$timing-function;
+    }
+}
+
+/* ------------------------------------------------
+    Animation Keyframes
+-------------------------------------------------*/
+@keyframes block-modal--fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes block-modal--fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes block-modal--slide-in {
+    from {
+        transform: translateY(15%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes block-modal--slide-out {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10%);
+    }
+}

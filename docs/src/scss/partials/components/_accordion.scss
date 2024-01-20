@@ -1,0 +1,7 @@
+@use "../../helpers/variables" as v;
+
+.block-accordion-group{
+    .accordion-item__panel[hidden] {
+        display: none;
+    }
+}

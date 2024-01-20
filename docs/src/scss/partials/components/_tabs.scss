@@ -1,0 +1,12 @@
+@use "../../helpers/variables" as v;
+
+.block-tabs{
+    .block-tabs__tab[aria-selected="true"]{
+        background-color: v.$bp-black;
+
+        span{
+            color: v.$bp-white;
+        }
+
+    }
+}
