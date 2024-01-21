@@ -15,8 +15,8 @@ table.component-table{
     }
 
     th {
-        background-color: v.$bp-black;
-        color: v.$bp-white;
+        background-color: v.$f11y-dark;
+        color: v.$f11y-white;
     }
 
     td::before {
@@ -24,7 +24,7 @@ table.component-table{
     }
 
     tr:nth-child(even){
-        background-color: rgba(v.$bp-black, 0.035);
+        background-color: rgba(v.$f11y-dark, 0.035);
     }
 }
 
@@ -36,15 +36,15 @@ $tablet-breakpoint: v.$tablet-size * 1px;
         display: block;
 
         caption{
-            background-color: v.$bp-black;
-            color: v.$bp-white;
+            background-color: v.$f11y-dark;
+            color: v.$f11y-white;
             padding: 1rem;
         }
 
         tr{
             padding: 0.5rem 1rem;
             margin: 0 0 .67rem;
-            border: 1px solid rgba(v.$bp-black, 0.085);
+            border: 1px solid rgba(v.$f11y-dark, 0.085);
         }
 
         tr,
@@ -58,7 +58,7 @@ $tablet-breakpoint: v.$tablet-size * 1px;
         }
 
         td {
-            border-bottom: 1px solid rgba(v.$bp-black, 0.085);
+            border-bottom: 1px solid rgba(v.$f11y-dark, 0.085);
 
             &::before{
                 display: inline-block;

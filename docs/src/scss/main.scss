@@ -16,6 +16,7 @@
 @use 'partials/footer';
 
     /* Components */
+    @use './partials/components/title';
     @use './partials/components/toggle';
     @use './partials/components/tabs';
     @use './partials/components/accordion';

@@ -2,10 +2,10 @@
 
 .block-tabs{
     .block-tabs__tab[aria-selected="true"]{
-        background-color: v.$bp-black;
+        background-color: v.$f11y-dark;
 
         span{
-            color: v.$bp-white;
+            color: v.$f11y-white;
         }
 
     }

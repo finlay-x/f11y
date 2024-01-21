@@ -10,7 +10,10 @@ render_partial(
     array()
 );
 
-echo 'Hello';
+render_partial(
+    'sections/section-accordion', 
+    array()
+);
 
 render_partial(
     'footer', 

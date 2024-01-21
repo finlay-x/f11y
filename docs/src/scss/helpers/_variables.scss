@@ -2,7 +2,7 @@
     Breakpoints
 -------------------------------------------------*/
 $mobile-breakpoint: 400;
-$desktop-breakpoint: 1200;
+$desktop-breakpoint: 1180;
 $tablet-size: calc($desktop-breakpoint - $mobile-breakpoint);
 
 
@@ -10,35 +10,35 @@ $tablet-size: calc($desktop-breakpoint - $mobile-breakpoint);
     Typography
 -------------------------------------------------*/
 /* Fonts */
-$heading-font: 'Trebuchet MS' , sans-serif;
-$body-font: 'Arial' , sans-serif;
+$heading-font: 'Figtree' , serif;
+$body-font: 'Figtree' , sans-serif;
 
 /* Font Sizes */
 $heading-sizes: (
     "h1" : (
         "slug" : "h",
         "mobile" : 45px,
-        "desktop" : 66px,
+        "desktop" : 161px,
     ),
     "h2" : (
         "slug" : "x-l",
         "mobile" : 38px,
-        "desktop" : 55px
+        "desktop" : 128px
     ),
     "h3" : (
         "slug" : "l",
         "mobile" : 31px,
-        "desktop" : 46px
+        "desktop" : 100px
     ),
     "h4" : (
         "slug" : "m",
         "mobile" : 26px,
-        "desktop" : 38px
+        "desktop" : 70px
     ),
     "h5" : (
         "slug" : "n",
         "mobile" : 22px,
-        "desktop" : 32px
+        "desktop" : 40px
     ),
     "h6" : (
         "slug" : "s",
@@ -49,24 +49,24 @@ $heading-sizes: (
 
 $body-sizes: (
     "h" : (
-        "mobile" : 27px,
-        "desktop" : 33px,
+        "mobile" : 20px,
+        "desktop" : 22px,
     ),
     "x-l" : (
-        "mobile" : 23px,
-        "desktop" : 27px
+        "mobile" : 18px,
+        "desktop" : 20px
     ),
     "l" : (
-        "mobile" : 19px,
-        "desktop" : 24px
+        "mobile" : 16px,
+        "desktop" : 18px
     ),
     "m" : (
         "mobile" : 16px,
-        "desktop" : 20px
+        "desktop" : 16px
     ),
     "n" : (
-        "mobile" : 16px,
-        "desktop" : 16px
+        "mobile" : 15px,
+        "desktop" : 15px
     ),
     "s" : (
         "mobile" : 14px,
@@ -105,13 +105,15 @@ $font-weights: (
 /* ------------------------------------------------
     Colours
 -------------------------------------------------*/
-$bp-black: #000000;
-$bp-white: #FFFFFF;
+$f11y-blue: #0046F0;
+$f11y-dark: #161D27;
+$f11y-white: #E2DBD7;
 
 /* SCSS Colours Maps */
 $colours: (
-    bp-black: $bp-black,
-    bp-white: $bp-white
+    f11y-blue: $f11y-blue,
+    f11y-dark: $f11y-dark,
+    f11y-white: $f11y-white
 );
 
 

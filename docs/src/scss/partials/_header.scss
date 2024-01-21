@@ -4,21 +4,29 @@
 @use "helpers/mixins" as m;
 
 header#masthead{
-    background-color: v.$bp-black;
-    color: v.$bp-white;
-    padding-block: 2rem;
-}
+    background-color: v.$f11y-dark;
+    color: v.$f11y-white;
+    padding-block: 3rem;
 
-.js-enabled #masthead,
-.js-enabled #masthead.sticky {
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    transition: transform .3s v.$timing-function;
-    z-index: 50;
-}
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
 
-.js-enabled #masthead.sticky.hide {
-    transform: translateY(-100%);
+    img{
+        max-width: 75px;
+        @extend .is-margin-centered;
+    }
+
+    h2{
+        max-width: 300px;
+        margin-block: 0;
+        line-height: 170%;
+
+        sup{
+            transform: translateY(-5px);
+            display: inline-block;
+        }
+    }
 }

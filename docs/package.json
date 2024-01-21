@@ -19,6 +19,7 @@
         "browser-sync": "^2.29.3",
         "cssnano": "^6.0.1",
         "del": "6.1.1",
+        "f11y": "^0.0.6",
         "gulp": "^4.0.2",
         "gulp-esbuild": "^0.11.2",
         "gulp-postcss": "^9.0.1",

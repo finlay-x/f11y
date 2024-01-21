@@ -6,7 +6,8 @@
 html {
     -webkit-text-size-adjust: 100%;
     font-family: v.$body-font;
-    color: rgba(v.$bp-black,1);
+    color: rgba(v.$f11y-dark,1);
+    background-color: rgba(v.$f11y-blue,1);
     scroll-behavior: smooth;
     font-size:1em;
 }
@@ -19,7 +20,7 @@ html {
 }
 
 *:focus-visible{
-    outline: 2px solid v.$bp-black;
+    outline: 2px solid v.$f11y-dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,7 +57,7 @@ hr {
     height: 1px;
     overflow: visible;
     width: 100%;
-    background-color: rgba(v.$bp-black,1);
+    background-color: rgba(v.$f11y-dark,1);
     border: none;
 }
 
@@ -104,9 +105,15 @@ ol ol{
 
 code,
 kbd,
-samp {
-    font-family: monospace, monospace;
+samp,
+:root code *{
+    font-family: monospace, monospace !important;
     font-size: 1em;
+}
+
+:not(pre) > code[class*="language-"], pre[class*="language-"]{
+    background-color: v.$f11y-dark !important;
+    color: v.$f11y-white !important;
 }
 
 small {
@@ -153,7 +160,7 @@ textarea {
 ::-moz-placeholder,
 ::placeholder,
 ::-webkit-input-placeholder{
-    color: rgba(v.$bp-black,0.75);
+    color: rgba(v.$f11y-dark,0.75);
 }
 
 input:focus::placeholder,
@@ -254,7 +261,7 @@ figure{
 
 figure > video + figcaption,
 figure > img + figcaption{
-    @extend .small-body;
+    @extend .s-b;
 }
 
 figure > video + figcaption{

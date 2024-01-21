@@ -10,14 +10,14 @@
     .block-modal__overlay {
         position: fixed;
         inset: 0;
-        background: rgba(v.$bp-black, 0.6);
+        background: rgba(v.$f11y-dark, 0.6);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .block-modal__container {
-        background-color: v.$bp-white;
+        background-color: v.$f11y-white;
         width: 100%;
         max-width: calc(v.$tablet-size * 1px);
         max-height: 100vh;

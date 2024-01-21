@@ -8,14 +8,15 @@
 @mixin heading {
     font-family: v.$heading-font;
     font-style: normal;
-    color: rgba(v.$bp-black,1);
+    line-height: 155%;
+    color: rgba(v.$f11y-dark,1);
     margin: .3rem 0 .67rem;
 }
 
 @mixin body {
     font-family: v.$body-font;
-    line-height: 150%;
-    color:rgba(v.$bp-black,1);
+    line-height: 155%;
+    color:rgba(v.$f11y-dark,1);
     font-weight: 300;
 }
 
