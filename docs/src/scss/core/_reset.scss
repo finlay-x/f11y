@@ -20,7 +20,8 @@ html {
 }
 
 *:focus-visible{
-    outline: 2px solid v.$f11y-dark;
+    outline: 2px solid v.$f11y-white;
+    outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -107,14 +108,10 @@ code,
 kbd,
 samp,
 :root code *{
-    font-family: monospace, monospace !important;
+    font-family: 'Red Hat Mono', monospace;
     font-size: 1em;
 }
 
-:not(pre) > code[class*="language-"], pre[class*="language-"]{
-    background-color: v.$f11y-dark !important;
-    color: v.$f11y-white !important;
-}
 
 small {
     font-size: 80%;

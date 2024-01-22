@@ -28,11 +28,11 @@ extract($parameters, EXTR_OVERWRITE);
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" rel="preload" as="style" href="../docs/assets/styles/app.min.css"/>
         <link rel="stylesheet" rel="preload" as="style" href="../docs/assets/vendor/styles/prism.css"/>
     </head>
     <body class="<?php echo $bodyClass;?>">
-        <a class="is-visually-hidden skip-content" role="link" title="Skip to content" href="#content">Skip To Content</a>
         <div id="page" class="site-content">
             <header id="masthead" class="site-header">
                 <div class="content-width base-layout">

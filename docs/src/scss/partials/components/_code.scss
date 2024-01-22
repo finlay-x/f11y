@@ -1,0 +1,43 @@
+@use "../../helpers/variables" as v;
+
+.f11y--tabs--code{
+	[role="tablist"]{
+		display:flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: flex-end;
+		gap: 10px;
+		padding-bottom: 0.5rem;
+		position: relative;
+
+		[role="tab"]{
+			background-color: v.$f11y-white;
+			color:v.$f11y-dark;
+			font-weight:700;
+			padding: 7px 10px;
+			border-radius: 2px;
+			position: relative;
+
+
+
+			&[aria-selected="true"]{
+				background-color: v.$f11y-dark;
+				color: v.$f11y-white;
+
+				&::after{
+					content:'';
+					position: absolute;
+					transform: translateX(-50%);
+					bottom: -8px;
+					left:50%;
+					width: 0; 
+					height: 0; 
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+					
+					border-top: 8px solid v.$f11y-dark;
+				}
+			}
+		}
+	}
+}

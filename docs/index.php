@@ -10,6 +10,7 @@ render_partial(
     array()
 );
 
+
 render_partial(
     'sections/section-accordion', 
     array()

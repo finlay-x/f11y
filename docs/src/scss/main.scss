@@ -9,6 +9,7 @@
 @use './core/reset';
 @use './core/typography';
 @use './core/layout';
+@use './core/global';
 
 /* Partials */
 @use 'partials/header';
@@ -17,6 +18,7 @@
 
     /* Components */
     @use './partials/components/title';
+    @use './partials/components/code';
     @use './partials/components/toggle';
     @use './partials/components/tabs';
     @use './partials/components/accordion';

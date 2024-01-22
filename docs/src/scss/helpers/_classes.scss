@@ -98,7 +98,7 @@
 -------------------------------------------------*/
 .grid-cols {
     display: grid;
-}
+} 
 
 .grid-cols--1 {
     grid-template-columns: 1fr;
@@ -106,7 +106,7 @@
 
 .grid-cols--2 {
     gap: 1em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols--3 {

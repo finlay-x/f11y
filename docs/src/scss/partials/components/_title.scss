@@ -6,10 +6,16 @@
     align-items: center;
     gap: 10px;
     border-bottom: 1px solid rgba(v.$f11y-white,0.35);
+    margin-bottom: 40px !important;
 
     span{
         transform: translateY(-4%);
         text-edge: cap;
         opacity: 50%;
+        
+    }
+
+    h2{
+        line-height: 100%;
     }
 }
