@@ -11,11 +11,16 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" rel="preload" as="style" href="./assets/styles/app.min.css"/>
         <link rel="stylesheet" rel="preload" as="style" href="./assets/vendor/styles/prism.css"/>
     </head>
     <body class="">
-        <a class="is-visually-hidden skip-content" role="link" title="Skip to content" href="#content">Skip To Content</a>
+        <div class="is-sticky">
+            <div class="tablet-width base-layout">
+                <p class="weight-500"><strong>Warning!</strong> <em>f11y</em> is in a pre-alpha state - improvements, optimisations and features are still being actively worked on. Expect bugs & breaking changes if you do decide to use it.</p>
+            </div>
+        </div>
         <div id="page" class="site-content">
             <header id="masthead" class="site-header">
                 <div class="content-width base-layout">
@@ -28,80 +33,610 @@
             </header>
             <main id="content" class="entry-content">
                 <article class="hentry">
-<section>
+<section class="section--container section--intro">
+    
+<div class="component--title f11y-white">
+    <span class="x-l-h uses-garamond weight-700">#</span>
+    <h2 class="h-h uses-garamond">Install</h2>
+</div>    <h3 class="h-b f11y-white weight-600">Install with npm</h3>
+    <pre id="pre-js-77335315">
+        <code class="language-javascript">
+            npm install f11y
+        </code>
+    </pre>
+    <br>
+    <br>
+    <h3 class="h-b f11y-white weight-600">via CDN / Script Tag</h3>
+    <pre id="pre-js-77335315">
+<code class="language-markup no-whitespace-normalization"><!--    </footer>
+    <script src="https://www.unpkg.com/f11y@latest/umd/f11y.min.js"></script>
+</body>--></code></pre>
+</section><section class="section--container section--accordion">
+    
 <div class="component--title f11y-white">
     <span class="x-l-h uses-garamond weight-700">#</span>
     <h2 class="h-h uses-garamond">Accordion</h2>
 </div>
-    <div>
-        <div class="f11y--tabs">
-            <div role="tablist" aria-labelledby="tablist">
-                <button id="tab-html-88130884" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-html-88130884">
-                    HTML
-                </button>
-                <button id="tab-css-88130884" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-css-88130884">
-                    CSS
-                </button>
-                <button id="tab-js-88130884" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-js-88130884">
-                    JavaScript
-                </button>
+    <div class="example--list">
+        <div class="grid-cols grid-cols--1">
+            <div class="example example--accordion">
+                <div class="example__title">
+                <span class="number-indicator">1</span>
+                    <h3 class="h-b f11y-white weight-600">Default Example</h3>
+                </div>
+                <div class="f11y--accordion f11y--accordion--default">
+                    <div class="f11y--accordion__item">
+                        <button id="accordion-default-trigger-1" aria-expanded="false" aria-controls="accordion-default-panel-1">
+                            Accordion Item 1
+                        </button>
+                        <div id="accordion-default-panel-1" role="region" aria-labelledby="accordion-default-trigger-1" hidden>
+                            <p>"Like all great travellers." said Essper, "I have seen more than I remember, and remember more than I have seen."</p>
+                        </div>
+                    </div>
+                
+                    <div class="f11y--accordion__item">
+                        <button id="accordion-default-trigger-2" aria-expanded="false" aria-controls="accordion-default-panel-2">
+                            Accordion Item 2
+                        </button>
+                        <div id="accordion-default-panel-2" role="region" aria-labelledby="accordion-default-trigger-2" hidden>
+                            <p>"There are people, who the more you do for them, the less they will do for themselves."</p>
+                        </div>
+                    </div>
+
+                    <div class="f11y--accordion__item">
+                        <button id="accordion-default-trigger-3" aria-expanded="false" aria-controls="accordion-default-panel-3">
+                            Accordion Item 3
+                        </button>
+                        <div id="accordion-default-panel-3" role="region" aria-labelledby="accordion-default-trigger-3" hidden>
+                            <p>"The wide world is all about you: you can fence yourselves in, but you cannot for ever fence it out."</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="tabpanel-html-88130884" role="tabpanel" aria-labelledby="tab-html-88130884">
-                <pre id="pre-html-88130884" class="line-numbers linkable-line-numbers" data-line="3,6,9">
-                    <code class="language-markup line-numbers"><!--
-                        <div class="f11y--tabs">
-                            <div role="tablist" aria-labelledby="tablist">
-                                <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
-                                    Tab Item 1
-                                </button>
-                                <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2">
-                                    Tab Item 2
-                                </button>
-                                <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3">
-                                    Tab Item 3
-                                </button>
+            <div class="f11y--tabs f11y--tabs--code">
+                <div role="tablist" aria-labelledby="tablist">
+                    
+                    <button id="tab-html-59448418" role="tab" aria-selected="false" aria-controls="tabpanel-html-59448418">
+                        HTML
+                    </button>
+                    <button id="tab-js-59448418" role="tab" aria-selected="false" aria-controls="tabpanel-js-59448418">
+                        JavaScript
+                    </button>
+                </div>
+
+                <div id="tabpanel-html-59448418" role="tabpanel" aria-labelledby="tab-html-59448418">
+                    <pre id="pre-html-59448418" class="line-numbers">
+                        <code class="language-markup line-numbers"><!--
+                            <div class="f11y--accordion">
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                        <p>Accordion Panel Content 1</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                        <p>Accordion Panel Content 2</p>
+                                    </div>
+                                </div>
+
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
+                                        <p>Accordion Panel Content 3</p>
+                                    </div>
+                                </div>
                             </div>
-                        
-                            <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">
-                                <p>Tab Panel Content 1</p>
-                            </div>
-                            <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">
-                                <p>Tab Panel Content 2</p>
-                            </div>
-                            <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">
-                                <p>Tab Panel Content 3</p>
-                            </div>
+                        --></code>
+                    </pre>
+                </div>
+                <div id="tabpanel-js-59448418" role="tabpanel" aria-labelledby="tab-js-59448418">
+                    <pre id="pre-js-59448418" class="line-numbers">
+                        <code class="language-javascript line-numbers">
+                        const accordionElm = document.querySelector(".f11y--accordion");
+                        new f11y.Accordion(
+                            accordionElm
+                        );
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+                <!-- Example 3-->
+        <div class="grid-cols grid-cols--1">
+            <div class="example example--accordion">
+                <div class="example__title">
+                    <span class="number-indicator">2</span>
+                    <h3 class="h-b f11y-white weight-600">Callback Example</h3>
+                </div>
+                <div class="f11y--accordion f11y--accordion--callback">
+                    <div class="external-triggers">
+                        <button class="external-callback-trigger is-closed" data-index="0">Item 1</button>
+                        <button class="external-callback-trigger is-closed" data-index="1">Item 2</button>
+                    </div>
+                    <div class="f11y--accordion__item">
+                        <button id="accordion-callback-trigger-1" aria-expanded="false" aria-controls="accordion-callback-panel-1">
+                            Accordion Item 1
+                        </button>
+                        <div id="accordion-callback-panel-1" role="region" aria-labelledby="accordion-callback-trigger-1" hidden>
+                            <p>"Let yourself be silently drawn by the stronger pull of what you really love."</p>
                         </div>
-                    --></code>
-                </pre>
+                    </div>
+                
+                    <div class="f11y--accordion__item">
+                        <button id="accordion-callback-trigger-2" aria-expanded="false" aria-controls="accordion-callback-panel-2">
+                            Accordion Item 2
+                        </button>
+                        <div id="accordion-callback-panel-2" role="region" aria-labelledby="accordion-callback-trigger-2" hidden>
+                            <p>"We all live with the objective of being happy; our lives are all different and yet the same."</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="tabpanel-css-88130884" role="tabpanel" aria-labelledby="tab-css-88130884">
-                <pre id="pre-css-88130884" class="line-numbers linkable-line-numbers">
-                    <code class="language-css line-numbers">
-                        
-                    </code>
-                </pre>
-            </div>
-            <div id="tabpanel-js-88130884" role="tabpanel" aria-labelledby="tab-js-88130884">
-                <pre id="pre-js-88130884" class="line-numbers linkable-line-numbers">
-                    <code class="language-javascript line-numbers">
-                        const tabList = document.querySelector(".f11y--tabs");
-                        new f11y.TabList(
-                            tabList,
+
+            <div class="f11y--tabs f11y--tabs--code">
+                <div role="tablist" aria-labelledby="tablist">
+                    
+                    <button id="tab-html-94548522" role="tab" aria-selected="false" aria-controls="tabpanel-html-94548522">
+                        HTML
+                    </button>
+                    <button id="tab-js-94548522" role="tab" aria-selected="false" aria-controls="tabpanel-js-94548522">
+                        JavaScript
+                    </button>
+                </div>
+
+                <div id="tabpanel-html-94548522" role="tabpanel" aria-labelledby="tab-html-94548522">
+                    <pre id="pre-html-94548522" class="line-numbers">
+                        <code class="language-markup line-numbers"><!--
+                            <div class="f11y--accordion">
+                                <div>
+                                    <button class="external-trigger is-closed" data-index="0">Trigger Item 1</button>
+                                    <button class="external-trigger is-closed" data-index="1">Trigger Item 2</button>
+                                </div>
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                        <p>Accordion Panel Content 1</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                        <p>Accordion Panel Content 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        --></code>
+                    </pre>
+                </div>
+                <div id="tabpanel-js-94548522" role="tabpanel" aria-labelledby="tab-js-94548522">
+                    <pre id="pre-js-94548522" class="line-numbers">
+                        <code class="language-javascript line-numbers">
+                        const accordionElm = document.querySelector(".f11y--accordion");
+                        const accordionObj = new f11y.Accordion(
+                            accordionElm,
                             {
-                                onChange: () => { },
-                                orientation: "horizontal",
-                                disableActiveTab: false 
+                                showMultiple: false,
+                                onOpen: function(itemObj, event){
+                                    const externalTrigger = document.querySelector('.external-trigger[data-index="' + itemObj.index + '"]');
+                                    externalTrigger.classList.add('is-open');
+                                    externalTrigger.classList.remove('is-closed');
+                                },
+                                onClose: function(itemObj, event){
+                                    const externalTrigger = document.querySelector('.external-trigger[data-index="' + itemObj.index + '"]');
+                                    externalTrigger.classList.add('is-closed');
+                                    externalTrigger.classList.remove('is-open');
+                                },
                             }
                         );
-                    </code>
-                </pre>
+
+                        const externalTriggers = document.querySelectorAll('.external-trigger');
+                        externalTriggers.forEach(function(trigger) {
+                            const item = accordionObj.accordionItems[trigger.dataset.index];
+
+                            trigger.addEventListener( 'click', function(e){
+                                accordionObj.toggle(item, e);
+                            });
+                        });
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="f11y--tabs f11y--tabs--code f11y--tabs--tables">
+        <div role="tablist" aria-labelledby="tablist">
+            <button id="tab-options-94548522" role="tab" aria-selected="false" aria-controls="tabpanel-options-94548522">
+                Options
+            </button>
+            <button id="tab-methods-94548522" role="tab" aria-selected="false" aria-controls="tabpanel-methods-94548522">
+                Methods
+            </button>
+        </div>
+
+        <div id="tabpanel-options-94548522" role="tabpanel" aria-labelledby="tab-options-94548522">
+            <table id="f11y--table-options-94548522" class="f11y--table table--js language-javascript">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>onOpen</div>
+                        </td>
+                        <td>
+                            <div><code>function</code></div>
+                        </td>
+                        <td>
+                            <div><code class="token parameter">(item, event){}</code></div>
+                        </td>
+                        <td>
+                            <div>Fired when an accordion item is opened.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div>onClose</div></td>
+                        <td><div><code>function</code></div></td>
+                        <td><div><code class="token parameter">(item, event){}</code></div></td>
+                        <td><div>Fired when an accordion item is closed.</div></td>
+                    </tr>
+                    <tr>
+                        <td><div>itemClass</div></td>
+                        <td><div><code class="token keyword">string</code></div></td>
+                        <td><div><code>f11y--accordion__item</code></div></td>
+                        <td><div>A valid class name that will be used to discover accordion items.</div></td>
+                    </tr>
+                    <tr>
+                        <td><div>showMultiple</div></td>
+                        <td><div><code class="token keyword">boolean</code></div></td>
+                        <td><div><code>true</code></div></td>
+                        <td><div>Should multiple items within the accordion be allowed to be opened at once.</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tabpanel-methods-94548522" role="tabpanel" aria-labelledby="tab-methods-94548522">
+            <table id="f11y--table-methods-94548522" class="f11y--table table--js language-javascript">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Parameters</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div><code>refresh()</code></div></td>
+                        <td><div><code>  </code></div></td>
+                        <td><div>Clears the class object and re-initialises the accordion</div></td>
+                    </tr>
+                    <tr>
+                        <td><div><code>toggle()</code></div></td>
+                        <td><div><code class="token keyword">accordionItemObject, event</code></div></td>
+                        <td><div><p class="f11y-white">Toggles passed accordion item. The item object can be retrived from <code>.accordionItems</code></p></div></td>
+                    </tr>
+                    <tr>
+                        <td><div><code>openItem()</code></div></td>
+                        <td><div><code class="token keyword">accordionItemObject, event</code></div></td>
+                        <td><div><p class="f11y-white">Opens the passed accordion item. The item object can be retrived from <code>.accordionItems</code></p></div></td>
+                    </tr>
+                    <tr>
+                        <td><div><code>closeItem()</code></div></td>
+                        <td><div><code class="token keyword">accordionItemObject, event</code></div></td>
+                        <td><div><p class="f11y-white">Closes the passed accordion item. The item object can be retrived from <code>.accordionItems</code></p></div></td>
+                    </tr>
+                    <tr>
+                        <td><div><code>openAll()</code></div></td>
+                        <td><div><code class="token keyword">event</code></div></td>
+                        <td><div>Opens all accordion items.</div></td>
+                    </tr>
+                    <tr>
+                        <td><div><code>closeAll()</code></div></td>
+                        <td><div><code class="token keyword">event</code></div></td>
+                        <td><div>Closes all accordion items.</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="section--container section--layer">
+    
+<div class="component--title f11y-white">
+    <span class="x-l-h uses-garamond weight-700">#</span>
+    <h2 class="h-h uses-garamond">Layer</h2>
+</div>    <div class="example--list">
+        <div class="grid-cols grid-cols--2">
+            <div class="example example--layer">
+                <div class="example__title">
+                <span class="number-indicator">1</span>
+                    <h3 class="h-b f11y-white weight-600">Default Modal</h3>
+                </div>
+                
+            </div>
+
+            <div class="f11y--tabs f11y--tabs--code">
+                <div role="tablist" aria-labelledby="tablist">
+                    <button id="tab-html-69431990" role="tab" aria-selected="false" aria-controls="tabpanel-html-69431990">
+                        HTML
+                    </button>
+                    <button id="tab-js-69431990" role="tab" aria-selected="false" aria-controls="tabpanel-js-69431990">
+                        JavaScript
+                    </button>
+                </div>
+
+                <div id="tabpanel-html-69431990" role="tabpanel" aria-labelledby="tab-html-69431990">
+                    <pre id="pre-html-69431990" class="line-numbers">
+                        <code class="language-markup line-numbers"><!--
+                            <div class="f11y--accordion">
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                        <p>Accordion Panel Content 1</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                        <p>Accordion Panel Content 2</p>
+                                    </div>
+                                </div>
+
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
+                                        <p>Accordion Panel Content 3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        --></code>
+                    </pre>
+                </div>
+                <div id="tabpanel-js-69431990" role="tabpanel" aria-labelledby="tab-js-69431990">
+                    <pre id="pre-js-69431990" class="line-numbers">
+                        <code class="language-javascript line-numbers">
+                        const accordion = document.querySelector(".f11y--accordion");
+                        new f11y.Accordion(
+                            accordion
+                        );
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+                <!-- Example 2-->
+        <div class="grid-cols grid-cols--2">
+            <div class="example example--accordion">
+                <div class="example__title">
+                    <span class="number-indicator">2</span>
+                    <h3 class="h-b f11y-white weight-600">Alert Example</h3>
+                </div>
+                
+            </div>
+
+            <div class="f11y--tabs f11y--tabs--code">
+                <div role="tablist" aria-labelledby="tablist">
+                    
+                    <button id="tab-html-20569215" role="tab" aria-selected="false" aria-controls="tabpanel-html-20569215">
+                        HTML
+                    </button>
+                    <button id="tab-js-20569215" role="tab" aria-selected="false" aria-controls="tabpanel-js-20569215">
+                        JavaScript
+                    </button>
+                </div>
+
+                <div id="tabpanel-html-20569215" role="tabpanel" aria-labelledby="tab-html-20569215">
+                    <pre id="pre-html-20569215" class="line-numbers">
+                        <code class="language-markup line-numbers"><!--
+                            <div class="f11y--accordion">
+                                <div>
+                                    <button class="external-trigger" data-index="0">Trigger Item 1</button>
+                                    <button class="external-trigger" data-index="1">Trigger Item 2</button>
+                                    <button class="external-trigger" data-index="2">Trigger Item 3</button>
+                                </div>
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                        <p>Accordion Panel Content 1</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                        <p>Accordion Panel Content 2</p>
+                                    </div>
+                                </div>
+
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
+                                        <p>Accordion Panel Content 3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        --></code>
+                    </pre>
+                </div>
+                <div id="tabpanel-js-20569215" role="tabpanel" aria-labelledby="tab-js-20569215">
+                    <pre id="pre-js-20569215" class="line-numbers">
+                        <code class="language-javascript line-numbers">
+                        const accordionElm = document.querySelector(".f11y--accordion--programmatic");
+                        const accordionObj = new f11y.Accordion(
+                            accordionElm
+                        );
+
+                        const externalTriggers = document.querySelectorAll('.external-trigger');
+                        externalTriggers.forEach(function(trigger) {
+                            const item = accordionObj.accordionItems[trigger.dataset.index];
+
+                            trigger.addEventListener( 'click', function(e){
+                                accordionObj.toggle(item, e);
+                            });
+                        });
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+                <!-- Example 3-->
+        <div class="grid-cols grid-cols--2">
+            <div class="example example--accordion">
+                <div class="example__title">
+                    <span class="number-indicator">2</span>
+                    <h3 class="h-b f11y-white weight-600">Sidebar Shelf</h3>
+                </div>
+                
+            </div>
+
+            <div class="f11y--tabs f11y--tabs--code">
+                <div role="tablist" aria-labelledby="tablist">
+                    
+                    <button id="tab-html-34643217" role="tab" aria-selected="false" aria-controls="tabpanel-html-34643217">
+                        HTML
+                    </button>
+                    <button id="tab-js-34643217" role="tab" aria-selected="false" aria-controls="tabpanel-js-34643217">
+                        JavaScript
+                    </button>
+                </div>
+
+                <div id="tabpanel-html-34643217" role="tabpanel" aria-labelledby="tab-html-34643217">
+                    <pre id="pre-html-34643217" class="line-numbers">
+                        <code class="language-markup line-numbers"><!--
+                            <div class="f11y--accordion">
+                                <div>
+                                    <button class="external-trigger is-closed" data-index="0">Trigger Item 1</button>
+                                    <button class="external-trigger is-closed" data-index="1">Trigger Item 2</button>
+                                    <button class="external-trigger is-closed" data-index="2">Trigger Item 3</button>
+                                </div>
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                        <p>Accordion Panel Content 1</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                        <p>Accordion Panel Content 2</p>
+                                    </div>
+                                </div>
+
+                                <div class="f11y--accordion__item">
+                                    <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
+                                        Accordion Item 1
+                                    </button>
+                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
+                                        <p>Accordion Panel Content 3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        --></code>
+                    </pre>
+                </div>
+                <div id="tabpanel-js-34643217" role="tabpanel" aria-labelledby="tab-js-34643217">
+                    <pre id="pre-js-34643217" class="line-numbers">
+                        <code class="language-javascript line-numbers">
+                        const accordionElm = document.querySelector(".f11y--accordion");
+                        const accordionObj = new f11y.Accordion(
+                            accordionElm,
+                            {
+                                showMultiple: false,
+                                onOpen: function(itemObj, event){
+                                    const index = itemObj.index;
+                                    const externalTrigger = document.querySelector('.external-callback-trigger[data-index="' + index + '"]');
+                                    externalTrigger.classList.add('is-open');
+                                    externalTrigger.classList.remove('is-closed');
+                                },
+                                onClose: function(itemObj, event){
+                                    const index = itemObj.index;
+                                    const externalTrigger = document.querySelector('.external-callback-trigger[data-index="' + index + '"]');
+                                    externalTrigger.classList.add('is-closed');
+                                    externalTrigger.classList.remove('is-open');
+                                },
+                            }
+                        );
+
+                        const externalTriggers = document.querySelectorAll('.external-trigger');
+                        externalTriggers.forEach(function(trigger) {
+                            const item = accordionObj.accordionItems[trigger.dataset.index];
+
+                            trigger.addEventListener( 'click', function(e){
+                                accordionObj.toggle(item, e);
+                            });
+                        });
+                        </code>
+                    </pre>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
-
+';
             </article> <!-- END OF .hentry -->
         </main> <!-- END OF .entry-content -->
         <!--

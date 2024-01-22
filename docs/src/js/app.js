@@ -19,22 +19,6 @@ new f11y.Accordion(
 );
 
 
-const accordionProgrammaticElm = document.querySelector(".f11y--accordion--programmatic");
-const accordionProgrammaticObj = new f11y.Accordion(
-    accordionProgrammaticElm
-);
-
-const externalProgrammaticTriggers = document.querySelectorAll('.external-programmatic-trigger');
-externalProgrammaticTriggers.forEach(function(trigger) {
-    const item = accordionProgrammaticObj.accordionItems[trigger.dataset.index];
-
-    trigger.addEventListener( 'click', function(e){
-        accordionProgrammaticObj.toggle(item, e);
-    });
-});
-
-
-
 const accordionCallbackElm = document.querySelector(".f11y--accordion--callback");
 const accordionCallbackObj = new f11y.Accordion(
     accordionCallbackElm,
@@ -62,4 +46,11 @@ externalCallbackTriggers.forEach(function(trigger) {
     trigger.addEventListener( 'click', function(e){
         accordionCallbackObj.toggle(item, e);
     });
+});
+
+const tables = document.querySelectorAll('.f11y--table');
+tables.forEach(function(table) {
+    let myTable = new f11y.Table(table);
+
+    console.log(myTable);
 });

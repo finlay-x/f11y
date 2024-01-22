@@ -30,7 +30,7 @@
 
 @mixin tablet-width {
     width: 100%;
-    max-width: calc(v.$desktop-breakpoint * 1px);
+    max-width: calc(v.$tablet-size * 1px);
 }
 
 @mixin base-layout {

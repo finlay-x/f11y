@@ -3,7 +3,7 @@
 .f11y--accordion{
     width: 100%;
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     flex-direction: column;
 
     .accordion-item__panel[hidden] {
@@ -18,7 +18,7 @@
             padding: 15px 20px;
             width: 100%;
             background-color: transparent;
-            font-weight: 300;
+            font-weight: 500;
             font-style: italic !important;
             font-size: var(--l-body);
             color: v.$f11y-white;
@@ -26,6 +26,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 2rem;
+            transition: background-color 0.3s v.$timing-function;
 
             &::after{
                 content: '';
@@ -41,11 +42,31 @@
                     background-color:v.$f11y-white;
                     transform: scale(1.2);
                 }
+                border: 1px solid rgba(v.$f11y-white, 0.9);
+                border-bottom:1px solid transparent;
+                border-radius: 2px;
+                background-color: rgba(v.$f11y-white, 0.075);
+
             }
         }
 
         div{
             width: 100%;
+        }
+
+        [role="region"]{
+            background-color: v.$f11y-dark;
+            padding: var(--n-heading);
+            border-radius: 0px 0px 2px 2px;
+            border: 1px solid rgba(v.$f11y-white, 0.9);
+            border-top: none;
+
+            *{
+                color: v.$f11y-white;
+                font-size: var(--h-body);
+                font-weight: 100;
+                font-style: italic;
+            }
         }
     }
     
@@ -58,14 +79,14 @@
 
         button{
             &.is-closed{
-                &::after{
-                    content: ' (Item is closed)';
+                &::before{
+                    content: 'Open ';
                 }
             }
 
             &.is-open{
-                &::after{
-                    content: ' (Item is open)';
+                &::before{
+                    content: 'Close ';
                 }
             }
         }

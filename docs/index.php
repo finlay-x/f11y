@@ -10,9 +10,18 @@ render_partial(
     array()
 );
 
+render_partial(
+    'sections/section-intro', 
+    array()
+);
 
 render_partial(
     'sections/section-accordion', 
+    array()
+);
+
+render_partial(
+    'sections/section-layer', 
     array()
 );
 

@@ -18,7 +18,9 @@ button{
 	flex-direction: row;
 	align-items: center;
 	min-height: calc(46px + 0.5rem);
-	margin-bottom: 1rem;
+	margin-bottom: 2.75rem;
+    padding-bottom: 1rem;
+    border-bottom:1px solid #ffffff21;
 	gap: 10px;
 
 	h3{
@@ -42,4 +44,141 @@ button{
 	display: flex;
 	flex-direction: column;
 	gap: 5rem;
+
+    > .grid-cols{
+        border: 1px solid #ffffff21;
+        padding: 2rem 2.5rem 2.5rem 2.5rem;
+        border-radius: 3px;
+        background-color: #ffffff05;
+        gap: 3rem;
+    }
+}
+
+.f11y--tabs--tables{
+    margin-top: 3rem;
+
+    [role="tablist"]{
+        margin-bottom: 0.75rem;
+    }
+}
+
+table.f11y--table {
+    border-collapse: collapse;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: v.$f11y-dark;
+    width: 100%;
+
+    thead{
+        background-color: v.$f11y-white;
+    }
+
+    th{
+        color: v.$f11y-dark;
+        text-align: left;
+        font-weight: 700;
+    }
+
+    td{
+        color: rgba(v.$f11y-white,0.9);
+        font-weight: 400;
+    }
+    
+    td,th {
+        padding: 1rem;
+    }
+    
+    td::before {
+        display: none;
+    }
+
+    td:not(:last-child){
+        border-right: 1px solid rgba(v.$f11y-white, 0.05);
+    }
+    
+    tr:nth-child(even) {
+        background-color: rgba(v.$f11y-white, 0.035);
+    }
+
+    tr:nth-child(odd) {
+        code{
+            background-color: rgba(v.$f11y-white, 0.035);
+        }
+    }
+
+    th:not(:last-child){
+        border-right: 1px solid rgba(v.$f11y-dark, 0.15);
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+    table.f11y--table {
+        display: block;
+        background-color: transparent;
+
+        tr {
+            border: 0px solid rgba(v.$f11y-white, 0.05);
+            display: block;
+            margin-bottom: 0.5rem;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+    
+        tr:nth-child(even) {
+            background-color: rgba(v.$f11y-dark, 1) !important;
+        }
+    
+        tr:nth-child(odd) {
+            background-color: rgba(v.$f11y-dark, 1);
+        }
+    
+        th,thead {
+            display: none;
+        }
+    
+        td {
+            display: flex;
+            align-items: stretch;
+            padding: 0;
+
+
+        }
+
+        td:nth-child(even){
+            > div{
+                background-color: rgba(v.$f11y-white, 0.035);
+            }
+        }
+
+        td:not(:last-child){
+            &::before{
+                border-bottom: 1px solid rgba(v.$f11y-dark, 0.15);
+            }
+        }
+    
+        td::before{
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 25%;
+            min-width: 120px;
+            background-color: rgba(v.$f11y-white, 1);
+            color: rgba(v.$f11y-dark, 1);
+            font-weight: 700;
+            flex-shrink: 0;
+
+
+        }
+
+        td > div{
+            display: flex;
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+
+
 }

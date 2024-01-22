@@ -3,6 +3,15 @@
 @use "helpers/classes" as c;
 @use "helpers/mixins" as m;
 
+.is-sticky{
+    position: sticky;
+    top: 0rem;
+    z-index: 100;
+    background-color: #ffcb00;
+    padding: 0.5rem;
+}
+
+
 header#masthead{
     background-color: v.$f11y-dark;
     color: v.$f11y-white;

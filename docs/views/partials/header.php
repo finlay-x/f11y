@@ -33,6 +33,11 @@ extract($parameters, EXTR_OVERWRITE);
         <link rel="stylesheet" rel="preload" as="style" href="../docs/assets/vendor/styles/prism.css"/>
     </head>
     <body class="<?php echo $bodyClass;?>">
+        <div class="is-sticky">
+            <div class="tablet-width base-layout">
+                <p class="weight-500"><strong>Warning!</strong> <em>f11y</em> is in a pre-alpha state - improvements, optimisations and features are still being actively worked on. Expect bugs & breaking changes if you do decide to use it.</p>
+            </div>
+        </div>
         <div id="page" class="site-content">
             <header id="masthead" class="site-header">
                 <div class="content-width base-layout">
