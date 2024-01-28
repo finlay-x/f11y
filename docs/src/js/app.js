@@ -54,3 +54,12 @@ tables.forEach(function(table) {
 
     console.log(myTable);
 });
+
+
+const layerDefaultModal = document.querySelector("#layer-default");
+new f11y.Layer(layerDefaultModal,
+    {
+        onOpen : (event, layer) => { console.log(event, layer) },
+        onClose: (event, layer) => { console.log(event, layer) }
+    }
+);

@@ -12,13 +12,28 @@ $data_id = generate_random_string(8);
     );
     ?>
     <div class="example--list">
-        <div class="grid-cols grid-cols--2">
+        <div class="grid-cols grid-cols--1">
             <div class="example example--layer">
                 <div class="example__title">
-                <span class="number-indicator">1</span>
+                    <span class="number-indicator">1</span>
                     <h3 class="h-b f11y-white weight-600">Default Modal</h3>
                 </div>
-                
+                <button f11y-layer-open="layer-default">Open Default Modal</button>
+                <div id="layer-default" class="f11y--layer layer--js" aria-hidden="true">
+                    <div class="f11y--layer__container" role="dialog" aria-modal="true">
+                        <button class="x-close" f11y-layer-close="layer-default">
+                            <span class="is-visually-hidden">Close Modal</span>
+                        </button>
+
+                        <div>
+                            <blockquote class="h-b f11y-white is-italic">
+                                "Develop interest in life as you see it; in people, things, literature, music - the world is so rich, simply throbbing with rich treasures, beautiful souls and interesting people. Forget yourself."
+                            </blockquote>
+                            <button f11y-layer-close="layer-default">Close</button>
+                        </div>
+                    </div>
+                    <div class="f11y--layer__overlay"></div>
+                </div>
             </div>
 
             <div class="f11y--tabs f11y--tabs--code">

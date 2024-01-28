@@ -1,32 +1,66 @@
 @use "../../helpers/variables" as v;
 
-.block-modal {
+.f11y--layer {
     display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
 
     &.is-open {
-        display: block;
-    }
-
-    .block-modal__overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(v.$f11y-dark, 0.6);
         display: flex;
-        justify-content: center;
-        align-items: center;
+        z-index: 100;
     }
 
-    .block-modal__container {
-        background-color: v.$f11y-white;
+    .f11y--layer__overlay{
+        background: rgba(v.$f11y-white, 0.3);
+        backdrop-filter: blur(2px);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        z-index: 5;
+    }
+
+    [role="dialog"] {
+        border-radius: 0.3em;
+        background-color: v.$f11y-dark;
         width: 100%;
         max-width: calc(v.$tablet-size * 1px);
         max-height: 100vh;
-        overflow-y: auto;
         box-sizing: border-box;
-    }
+        padding: 1.5rem;
+        position: relative;
+        z-index: 10;
 
-    .block-modal__inner-container {
-        padding: 1rem;
+        .x-close{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            border-radius: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(45deg);
+
+            &::before,
+            &::after{
+                content: '';
+                position: absolute;
+                width: 17px;
+                height: 3px;
+                border-radius: 3px;
+                background-color: v.$f11y-dark;
+                transform-origin: center;
+            }
+
+            &::before{
+                transform: rotate(-90deg);
+            }
+        }
     }
 
     &.block-modal--animate .block-modal__container,
