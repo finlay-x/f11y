@@ -58,15 +58,23 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 
 ## Roadmap
 #### V0.1 Release
-- [ ] Documentation: Finish JSDoc & Documentation + refactor/optimisations
+- [ ] Dropdown -- Disable close on background click
+- [ ] Toast -- Key to focus to toast container area
+- [ ] Tooltip -- Initial delay
+- [ ] TabList -- Disable on select bugged
+- [ ] Fix and test any final issues
+- [ ] Complete docs website
 
 #### V0.2 Release
-- [ ] Bug: Toast awaitCloseTransition
+- [ ] Bug: Toast awaitCloseTransition doesn't work
 - [ ] Feature: Implement Search on Dropdown / Support Select
 - [ ] Feature: Implement animation for Accordions
 - [ ] Feature: Implement convert to accordion functionality on tabs
-
+- [ ] Feature: Implement Submenu support on Dropdowns
+- [ ] Feature: Implement swiping on tab panels
+ 
 #### V1.0 Release
 - [ ] Plugin: Resizable Windows
 - [ ] Plugin: Date Picker
 - [ ] Plugin: Input Range Sliders
+- [ ] Plugin: Context Menus (using templates)
