@@ -1,11 +1,11 @@
-> ⚠️ f11y is still in a alpha state - improvements, optimisations and features are still being actively working on. Expect bugs & breaking changes if you do decide to use it.
+> ⚠️ f11y is still in an alpha state - improvements, optimisations and features are still being actively worked on. Expect bugs & breaking changes if you do decide to use it.
 
 
 </br>
 <h1 align="center">
     <img alt="f11y, A functionality component library for pure JavaScript" width="1280" title="f11y" src="https://i.ibb.co/Bcw2YM2/f11y-header.jpg">
 </h1>
-<p align="center"><strong><em>f11y</em></strong> is a barebones collection of accessible JavaScript functionality components, with zero dependencies. <br><strong>Weighing in at just <em>~6kb min.gz'd</em></strong></p>
+<p align="center"><strong><em>f11y</em></strong> is a barebones collection of accessible JavaScript functionality components, with zero dependencies. <br><strong>Weighing in at just <em>~7kb min.gz'd</em></strong></p>
 
 ## Installation
 **via CDN / Script Tag**
@@ -58,15 +58,15 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 
 ## Roadmap
 #### V0.1 Release
-- [ ] Dropdown -- Disable close on background click
-- [ ] Toast -- Key to focus to toast container area
+- [ ] Toast -- Key to focus to toast container area -- f6?
 - [ ] Tooltip -- Initial delay
-- [ ] TabList -- Disable on select bugged
-- [ ] Fix and test any final issues
+- [ ] Feature -- Implement destroy methods
+- [ ] Complete docs website
 
 #### V0.2 Release
+- [ ] Bug: TabList Fix 'Disable active tab' (it's bugged to hell)
 - [ ] Bug: Toast awaitCloseTransition doesn't work
-- [ ] Feature: Implement Search on Dropdown / Support Select
+- [ ] Feature: Support Search on Dropdown / Support Select
 - [ ] Feature: Implement animation for Accordions
 - [ ] Feature: Implement convert to accordion functionality on tabs
 - [ ] Feature: Implement Submenu support on Dropdowns
