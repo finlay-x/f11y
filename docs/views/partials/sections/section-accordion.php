@@ -20,29 +20,29 @@ $data_id = generate_random_string(8);
                     <h3 class="h-b f11y-white weight-600">Default Example</h3>
                 </div>
                 <div class="f11y--accordion f11y--accordion--default">
-                    <div class="f11y--accordion__item">
-                        <button id="accordion-default-trigger-1" aria-expanded="false" aria-controls="accordion-default-panel-1">
+                    <div f11y-accordion-item>
+                        <button id="accordion-default-trigger-1" aria-expanded="true" aria-controls="accordion-default-panel-1">
                             Accordion Item 1
                         </button>
-                        <div id="accordion-default-panel-1" role="region" aria-labelledby="accordion-default-trigger-1" hidden>
+                        <div id="accordion-default-panel-1" role="region" aria-labelledby="accordion-default-trigger-1">
                             <p>"Like all great travellers." said Essper, "I have seen more than I remember, and remember more than I have seen."</p>
                         </div>
                     </div>
                 
-                    <div class="f11y--accordion__item">
+                    <div f11y-accordion-item>
                         <button id="accordion-default-trigger-2" aria-expanded="false" aria-controls="accordion-default-panel-2">
                             Accordion Item 2
                         </button>
-                        <div id="accordion-default-panel-2" role="region" aria-labelledby="accordion-default-trigger-2" hidden>
+                        <div id="accordion-default-panel-2" role="region" aria-labelledby="accordion-default-trigger-2">
                             <p>"There are people, who the more you do for them, the less they will do for themselves."</p>
                         </div>
                     </div>
 
-                    <div class="f11y--accordion__item">
+                    <div f11y-accordion-item>
                         <button id="accordion-default-trigger-3" aria-expanded="false" aria-controls="accordion-default-panel-3">
                             Accordion Item 3
                         </button>
-                        <div id="accordion-default-panel-3" role="region" aria-labelledby="accordion-default-trigger-3" hidden>
+                        <div id="accordion-default-panel-3" role="region" aria-labelledby="accordion-default-trigger-3">
                             <p>"The wide world is all about you: you can fence yourselves in, but you cannot for ever fence it out."</p>
                         </div>
                     </div>
@@ -64,29 +64,29 @@ $data_id = generate_random_string(8);
                     <pre id="pre-html-<?=$data_id?>" class="line-numbers">
                         <code class="language-markup line-numbers"><!--
                             <div class="f11y--accordion">
-                                <div class="f11y--accordion__item">
-                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
+                                <div f11y-accordion-item>
+                                    <button id="accordion-trigger-1" aria-expanded="true" aria-controls="accordion-panel-1">
                                         Accordion Item 1
                                     </button>
-                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1">
                                         <p>Accordion Panel Content 1</p>
                                     </div>
                                 </div>
                             
-                                <div class="f11y--accordion__item">
+                                <div f11y-accordion-item>
                                     <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
                                         Accordion Item 1
                                     </button>
-                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2">
                                         <p>Accordion Panel Content 2</p>
                                     </div>
                                 </div>
 
-                                <div class="f11y--accordion__item">
+                                <div f11y-accordion-item>
                                     <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
                                         Accordion Item 1
                                     </button>
-                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
+                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3">
                                         <p>Accordion Panel Content 3</p>
                                     </div>
                                 </div>
@@ -125,20 +125,20 @@ $data_id = generate_random_string(8);
                         <button class="external-callback-trigger is-closed" data-index="0">Item 1</button>
                         <button class="external-callback-trigger is-closed" data-index="1">Item 2</button>
                     </div>
-                    <div class="f11y--accordion__item">
+                    <div f11y-accordion-item>
                         <button id="accordion-callback-trigger-1" aria-expanded="false" aria-controls="accordion-callback-panel-1">
                             Accordion Item 1
                         </button>
-                        <div id="accordion-callback-panel-1" role="region" aria-labelledby="accordion-callback-trigger-1" hidden>
+                        <div id="accordion-callback-panel-1" role="region" aria-labelledby="accordion-callback-trigger-1">
                             <p>"Let yourself be silently drawn by the stronger pull of what you really love."</p>
                         </div>
                     </div>
                 
-                    <div class="f11y--accordion__item">
+                    <div f11y-accordion-item>
                         <button id="accordion-callback-trigger-2" aria-expanded="false" aria-controls="accordion-callback-panel-2">
                             Accordion Item 2
                         </button>
-                        <div id="accordion-callback-panel-2" role="region" aria-labelledby="accordion-callback-trigger-2" hidden>
+                        <div id="accordion-callback-panel-2" role="region" aria-labelledby="accordion-callback-trigger-2">
                             <p>"We all live with the objective of being happy; our lives are all different and yet the same."</p>
                         </div>
                     </div>
@@ -164,20 +164,20 @@ $data_id = generate_random_string(8);
                                     <button class="external-trigger is-closed" data-index="0">Trigger Item 1</button>
                                     <button class="external-trigger is-closed" data-index="1">Trigger Item 2</button>
                                 </div>
-                                <div class="f11y--accordion__item">
+                                <div f11y-accordion-item>
                                     <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
                                         Accordion Item 1
                                     </button>
-                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
+                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1">
                                         <p>Accordion Panel Content 1</p>
                                     </div>
                                 </div>
                             
-                                <div class="f11y--accordion__item">
+                                <div f11y-accordion-item>
                                     <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
                                         Accordion Item 1
                                     </button>
-                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
+                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2">
                                         <p>Accordion Panel Content 2</p>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ $data_id = generate_random_string(8);
 
                         const externalTriggers = document.querySelectorAll('.external-trigger');
                         externalTriggers.forEach(function(trigger) {
-                            const item = accordionObj.accordionItems[trigger.dataset.index];
+                            const item = accordionObj.items[trigger.dataset.index];
 
                             trigger.addEventListener( 'click', function(e){
                                 accordionObj.toggle(item, e);

@@ -7,20 +7,12 @@
     justify-content: center;
     align-items: center;
     padding: 3rem;
+    background: rgba(v.$f11y-white, 0.3);
+    backdrop-filter: blur(2px);
 
     &.is-open {
         display: flex;
         z-index: 100;
-    }
-
-    .f11y--layer__overlay{
-        background: rgba(v.$f11y-white, 0.3);
-        backdrop-filter: blur(2px);
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        inset: 0;
-        z-index: 5;
     }
 
     [role="dialog"] {
@@ -71,58 +63,66 @@
     /* ------------------------------------------------
         Animation Modifier Classes
     -------------------------------------------------*/
-    &.block-modal--animate-slide[aria-hidden="false"] .block-modal__container {
-        animation: block-modal--slide-in .4s v.$timing-function;
+    &.is-animating.is-opening [role=dialog]{
+        animation: slide-in-up .4s v.$timing-function;
     }
     
-    &.block-modal--animate-slide[aria-hidden="true"] .block-modal__container {
-        animation: block-modal--slide-out .4s v.$timing-function;
+    &.is-animating.is-closing [role=dialog]{
+        animation: slide-out-down .4s v.$timing-function;
     }
     
-    &.block-modal--animate-fade[aria-hidden="false"] .block-modal__overlay {
-        animation: block-modal--fade-in .4s v.$timing-function;
+    &.is-animating.is-opening{
+        animation: fade-in .4s v.$timing-function;
     }
     
-    &.block-modal--animate-fade[aria-hidden="true"] .block-modal__overlay {
-        animation: block-modal--fade-out .4s v.$timing-function;
+    &.is-animating.is-closing{
+        animation: fade-out .4s v.$timing-function;
     }
 }
 
 /* ------------------------------------------------
     Animation Keyframes
 -------------------------------------------------*/
-@keyframes block-modal--fade-in {
+@keyframes fade-in {
     from {
-        opacity: 0;
+        background: rgba(v.$f11y-white, 0);
+        backdrop-filter: blur(0px);
     }
     to {
-        opacity: 1;
+        background: rgba(v.$f11y-white, 0.3);
+        backdrop-filter: blur(3px);
     }
 }
 
-@keyframes block-modal--fade-out {
+@keyframes fade-out {
     from {
-        opacity: 1;
+        background: rgba(v.$f11y-white, 0.3);
+        backdrop-filter: blur(3px);
     }
     to {
-        opacity: 0;
+        background: rgba(v.$f11y-white, 0);
+        backdrop-filter: blur(0px);
     }
 }
 
-@keyframes block-modal--slide-in {
+@keyframes slide-in-up {
     from {
+        opacity: 0;
         transform: translateY(15%);
     }
     to {
+        opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes block-modal--slide-out {
+@keyframes slide-out-down {
     from {
+        opacity: 1;
         transform: translateY(0);
     }
     to {
+        opacity: 0;
         transform: translateY(-10%);
     }
 }

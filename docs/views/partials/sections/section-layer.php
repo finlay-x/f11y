@@ -18,6 +18,9 @@ $data_id = generate_random_string(8);
                     <span class="number-indicator">1</span>
                     <h3 class="h-b f11y-white weight-600">Default Modal</h3>
                 </div>
+                <p class="x-l-b f11y-white">A default modal dialog allows you to close the modal on a background click, with the Esc key and without confirming an action.</p>
+                <br>
+                <br>
                 <button f11y-layer-open="layer-default">Open Default Modal</button>
                 <div id="layer-default" class="f11y--layer layer--js" aria-hidden="true">
                     <div class="f11y--layer__container" role="dialog" aria-modal="true">
@@ -32,7 +35,6 @@ $data_id = generate_random_string(8);
                             <button f11y-layer-close="layer-default">Close</button>
                         </div>
                     </div>
-                    <div class="f11y--layer__overlay"></div>
                 </div>
             </div>
 
@@ -49,31 +51,17 @@ $data_id = generate_random_string(8);
                 <div id="tabpanel-html-<?=$data_id?>" role="tabpanel" aria-labelledby="tab-html-<?=$data_id?>">
                     <pre id="pre-html-<?=$data_id?>" class="line-numbers">
                         <code class="language-markup line-numbers"><!--
-                            <div class="f11y--accordion">
-                                <div class="f11y--accordion__item">
-                                    <button id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-panel-1">
-                                        Accordion Item 1
+                            <button f11y-layer-open="layer-default">Open Default Modal</button>
+                            <div id="layer-default" aria-hidden="true">
+                                <div role="dialog" aria-modal="true">
+                                    <button f11y-layer-close="layer-default">
+                                        <span class="is-visually-hidden">Close Modal</span>
                                     </button>
-                                    <div id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1" hidden>
-                                        <p>Accordion Panel Content 1</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="f11y--accordion__item">
-                                    <button id="accordion-trigger-2" aria-expanded="false" aria-controls="accordion-panel-2">
-                                        Accordion Item 1
-                                    </button>
-                                    <div id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2" hidden>
-                                        <p>Accordion Panel Content 2</p>
-                                    </div>
-                                </div>
-
-                                <div class="f11y--accordion__item">
-                                    <button id="accordion-trigger-3" aria-expanded="false" aria-controls="accordion-panel-3">
-                                        Accordion Item 1
-                                    </button>
-                                    <div id="accordion-panel-3" role="region" aria-labelledby="accordion-trigger-3" hidden>
-                                        <p>Accordion Panel Content 3</p>
+                                    <div>
+                                        <blockquote>
+                                            "Develop interest in life as you see it; in people, things, literature, music - the world is so rich, simply throbbing with rich treasures, beautiful souls and interesting people. Forget yourself."
+                                        </blockquote>
+                                        <button f11y-layer-close="layer-default">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,9 +71,12 @@ $data_id = generate_random_string(8);
                 <div id="tabpanel-js-<?=$data_id?>" role="tabpanel" aria-labelledby="tab-js-<?=$data_id?>">
                     <pre id="pre-js-<?=$data_id?>" class="line-numbers">
                         <code class="language-javascript line-numbers">
-                        const accordion = document.querySelector(".f11y--accordion");
-                        new f11y.Accordion(
-                            accordion
+                        const modal = document.querySelector("#layer-default");
+                        new f11y.Layer(modal,
+                            {
+                                awaitCloseAnimation: true,
+                                awaitOpenAnimation: true,
+                            }
                         );
                         </code>
                     </pre>
@@ -103,13 +94,27 @@ $data_id = generate_random_string(8);
 
         <?php $data_id = generate_random_string(8); ?>
         <!-- Example 2-->
-        <div class="grid-cols grid-cols--2">
-            <div class="example example--accordion">
+        <div class="grid-cols grid-cols--1">
+        <div class="example example--layer">
                 <div class="example__title">
                     <span class="number-indicator">2</span>
-                    <h3 class="h-b f11y-white weight-600">Alert Example</h3>
+                    <h3 class="h-b f11y-white weight-600">Alert Dialog</h3>
                 </div>
-                
+                <p class="x-l-b f11y-white">An alert dialog forces the user to take an action by disabling the background click and the Esc key methods for closing the dialog</p>
+                <br>
+                <br>
+                <button f11y-layer-open="layer-alert">Open Alert Dialog</button>
+                <div id="layer-alert" class="f11y--layer layer--js" aria-hidden="true">
+                    <div class="f11y--layer__container" role="dialog" aria-modal="true">
+                        <div>
+                            <blockquote class="h-b f11y-white is-italic">
+                                "Develop interest in life as you see it; in people, things, literature, music - the world is so rich, simply throbbing with rich treasures, beautiful souls and interesting people. Forget yourself."
+                            </blockquote>
+                            <button f11y-layer-close="layer-alert">Cancel</button>
+                            <button f11y-layer-close="layer-alert">Confirm</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="f11y--tabs f11y--tabs--code">

@@ -41,7 +41,7 @@ const accordionCallbackObj = new f11y.Accordion(
 
 const externalCallbackTriggers = document.querySelectorAll('.external-callback-trigger');
 externalCallbackTriggers.forEach(function(trigger) {
-    const item = accordionCallbackObj.accordionItems[trigger.dataset.index];
+    const item = accordionCallbackObj.items[trigger.dataset.index];
 
     trigger.addEventListener( 'click', function(e){
         accordionCallbackObj.toggle(item, e);
@@ -51,15 +51,24 @@ externalCallbackTriggers.forEach(function(trigger) {
 const tables = document.querySelectorAll('.f11y--table');
 tables.forEach(function(table) {
     let myTable = new f11y.Table(table);
-
-    console.log(myTable);
 });
 
 
 const layerDefaultModal = document.querySelector("#layer-default");
 new f11y.Layer(layerDefaultModal,
     {
-        onOpen : (event, layer) => { console.log(event, layer) },
-        onClose: (event, layer) => { console.log(event, layer) }
+        closeOnBackgroundClick: true,
+        awaitCloseAnimation: true,
+        awaitOpenAnimation: true,
+    }
+);
+
+
+const layerAlertModal = document.querySelector("#layer-alert");
+new f11y.Layer(layerAlertModal,
+    {
+        closeOnBackgroundClick: false,
+        awaitCloseAnimation: true,
+        awaitOpenAnimation: true,
     }
 );
