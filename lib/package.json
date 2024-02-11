@@ -1,6 +1,6 @@
 {
     "name": "f11y",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
     "main": "umd/f11y.js",
     "cdn": "umd/f11y.min.js",
@@ -20,7 +20,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "rollup -c -w",
-        "build": "rollup -c",
+        "build": "rollup -c && tsc",
         "deploy": "npm run build && npm publish",
         "sync": "cp -rf ../Readme.md ./"
     },
