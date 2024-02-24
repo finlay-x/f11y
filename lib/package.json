@@ -1,6 +1,6 @@
 {
     "name": "f11y",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
     "main": "umd/f11y.js",
     "cdn": "umd/f11y.min.js",

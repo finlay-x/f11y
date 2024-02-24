@@ -5,7 +5,7 @@
 <h1 align="center">
     <img alt="f11y, A functionality component library for pure JavaScript" width="1280" title="f11y" src="https://i.ibb.co/Bcw2YM2/f11y-header.jpg">
 </h1>
-<p align="center"><strong><em>f11y</em></strong> is a barebones collection of accessible JavaScript functionality components, with zero dependencies. <br><strong>Weighing in at just <em>~7kb min.gz'd</em></strong></p>
+<p align="center"><strong><em>f11y</em></strong> is a barebones collection of accessible JavaScript functionality components, with zero dependencies. <br><strong>Weighing in at just <em>~6kb min.gz'd</em></strong></p>
 
 ## Installation
 **via CDN / Script Tag**
@@ -20,6 +20,9 @@
 **via npm**
 ```shell
 npm install f11y --save
+```
+```js filename="app.js"
+import f11y from 'f11y';
 ```
 
 ## f11y is ***not*** a UI framework.
@@ -45,16 +48,26 @@ npm install f11y --save
 
 ✔️ Responsive Tables
 
-✔️ Toasts
+✔️ Toasts *(Available as a plugin for ~2kb min.gz'd)*
+
+❌ Context Menus *(On the roadmap for V1.0 release - as a plugin)*
+
+❌ Calendar/Date Range Picker *(On the Roadmap for V1.0 Release - as a plugin)*
+
+❌ Input Range Slider *(On the Roadmap for V1.0 Release - as a plugin)*
+
+❌ Resizable Windows *(On the Roadmap for V1.0 Release - as a plugin)*
 
 
 ### General Initialisation
 All f11y components are initialised in a similar way and usually follow this pattern:
-```js
+```js filename="app.js"
 const componentElement = document.querySelector(".my-component");
 new f11y.ComponentName(componentElement, configObject); // Config is optional in all components
 ```
 **[Please refer to our examples folder for full details on HTML Markup and config options for each component](examples/Accordion.md)**
+
+***! Documentation Website Coming Soon***
 
 ## Roadmap
 #### V0.1 Release
@@ -64,13 +77,14 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 - [ ] Complete docs website
 
 #### V0.2 Release
-- [ ] Bug: TabList Fix 'Disable active tab' (it's bugged to hell)
+- [ ] Bug: Fix 'Disable active tab' on TabList (it's bugged to hell)
 - [ ] Bug: Toast awaitCloseTransition doesn't work
-- [ ] Feature: Support Search on Dropdown / Support Select
-- [ ] Feature: Implement animation for Accordions
-- [ ] Feature: Implement convert to accordion functionality on tabs
-- [ ] Feature: Implement Submenu support on Dropdowns
-- [ ] Feature: Implement swiping on tab panels
+- [ ] Feature: Support Search on Dropdown
+- [ ] Feature: Implement animation for Accordion
+- [ ] Feature: Implement convert to accordion functionality on TabList
+- [ ] Feature: Implement button group support on TabList
+- [ ] Feature: Implement submenu support on Dropdown
+- [ ] Feature: Implement swiping on TabList panels
  
 #### V1.0 Release
 - [ ] Plugin: Resizable Windows
