@@ -1,10 +1,10 @@
-import f11y from 'f11y';
+import { f11yInit } from 'f11y';
 
-console.log(f11y);
+const f11y = f11yInit();
 
 const tabLists = document.querySelectorAll(".f11y--tabs--code");
 tabLists.forEach(function(tabList) {
-    const tablistObj = new f11y.TabList(
+    const tablistObj = new f11yObj.TabList(
         tabList,
         {
             onChange: () => { },
@@ -16,13 +16,13 @@ tabLists.forEach(function(tabList) {
 
 
 const accordionDefault = document.querySelector(".f11y--accordion--default");
-new f11y.Accordion(
+new f11yObj.Accordion(
     accordionDefault
 );
 
 
 const accordionCallbackElm = document.querySelector(".f11y--accordion--callback");
-const accordionCallbackObj = new f11y.Accordion(
+const accordionCallbackObj = new f11yObj.Accordion(
     accordionCallbackElm,
     {
         showMultiple: false,
@@ -52,12 +52,12 @@ externalCallbackTriggers.forEach(function(trigger) {
 
 const tables = document.querySelectorAll('.f11y--table');
 tables.forEach(function(table) {
-    let myTable = new f11y.Table(table);
+    let myTable = new f11yObj.Table(table);
 });
 
 
 const layerDefaultModal = document.querySelector("#layer-default");
-new f11y.Layer(layerDefaultModal,
+new f11yObj.Layer(layerDefaultModal,
     {
         closeOnBackgroundClick: true,
         awaitCloseAnimation: true,
@@ -67,7 +67,7 @@ new f11y.Layer(layerDefaultModal,
 
 
 const layerAlertModal = document.querySelector("#layer-alert");
-new f11y.Layer(layerAlertModal,
+new f11yObj.Layer(layerAlertModal,
     {
         closeOnBackgroundClick: false,
         awaitCloseAnimation: true,
