@@ -1,5 +1,7 @@
 import f11y from 'f11y';
 
+console.log(f11y);
+
 const tabLists = document.querySelectorAll(".f11y--tabs--code");
 tabLists.forEach(function(tabList) {
     const tablistObj = new f11y.TabList(
