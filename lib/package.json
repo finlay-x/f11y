@@ -2,13 +2,20 @@
     "name": "f11y",
     "version": "0.0.11",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
-    "main": "umd/f11y.js",
+    "exports": {
+        ".": {
+            "import": "./umd/f11y.es.js",
+            "require": "./umd/f11y.js"
+        },
+        "./umd": "./umd",
+        "./umd/plugins": "./umd/plugins"
+    },
     "cdn": "umd/f11y.min.js",
-    "module": "umd/f11y.es.js",
     "type": "module",
-    "types": "umd/index.d.ts",
+    "types": "umd/dts/index.d.ts",
     "files": [
-        "/umd"
+        "/umd",
+        "/umd/plugins"
     ],
     "jsdelivr": "umd/f11y.min.js",
     "author": "Finlay",
@@ -51,6 +58,7 @@
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-multi-entry": "^6.0.1",
         "@rollup/plugin-terser": "^0.4.4",
+        "dts-bundle-generator": "^9.3.1",
         "rollup": "^4.0.0",
         "rollup-plugin-filesize": "^10.0.0"
     }

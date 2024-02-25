@@ -8,7 +8,8 @@
         "allowJs": true,
         "declaration": true,
         "emitDeclarationOnly": true,
-        "outDir": "umd/",
+        "outDir": "umd/dts",
+        "outFile": "umd/dts/index.d.ts",
         "checkJs": true,
         "strict": true
     }
