@@ -1,6 +1,6 @@
 {
     "name": "f11y",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
     "exports": {
         ".": {
