@@ -71,23 +71,26 @@ new f11y.ComponentName(componentElement, configObject); // Config is optional in
 
 ## Roadmap
 #### V0.1 Release
-- [ ] Toast -- Key to focus to toast container area -- f6?
-- [ ] Tooltip -- Initial delay
-- [ ] Feature -- Implement destroy methods
-- [ ] Complete docs website
-
-#### V0.2 Release
-- [ ] Bug: Fix 'Disable active tab' on TabList (it's bugged to hell)
+- [ ] Bug: 'Disable active tab' doesn't work on TabList (it's bugged to hell)
 - [ ] Bug: Toast awaitCloseTransition doesn't work
-- [ ] Feature: Support Search on Dropdown
+- [ ] Bug: Tooltip initial delay doesnt work
+- [ ] Feature: Key to focus to toast container area -- f6?
+- [ ] Feature: Complete docs website
+- [ ] Feature: Implement destroy methods
+- [ ] Feature: Implement full events system
+- [ ] Feature: Implement swiping on TabList panels
 - [ ] Feature: Implement animation for Accordion
 - [ ] Feature: Implement convert to accordion functionality on TabList
-- [ ] Feature: Implement button group support on TabList
+- [ ] Feature: Button group on TabList
+- [ ] Feature: Hover trigger for dropdown
+
+#### V0.2 Release
+- [ ] Feature: Support Search on Dropdown
 - [ ] Feature: Implement submenu support on Dropdown
-- [ ] Feature: Implement swiping on TabList panels
  
 #### V1.0 Release
 - [ ] Plugin: Resizable Windows
 - [ ] Plugin: Date Picker
 - [ ] Plugin: Input Range Sliders
 - [ ] Plugin: Context Menus (using templates)
+- [ ] Plugin: OTP Input
