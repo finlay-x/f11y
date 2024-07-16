@@ -65,9 +65,8 @@ All f11y components are initialised in a similar way and usually follow this pat
 const componentElement = document.querySelector(".my-component");
 new f11y.ComponentName(componentElement, configObject); // Config is optional in all components
 ```
-**[Please refer to our examples folder for full details on HTML Markup and config options for each component](examples/Accordion.md)**
 
-***! Documentation Website Coming Soon***
+***! Full Documentation Coming Soon***
 
 ## Roadmap
 #### V0.1 Release

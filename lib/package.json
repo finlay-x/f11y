@@ -1,21 +1,19 @@
 {
     "name": "f11y",
-    "version": "0.0.17",
+    "version": "0.0.19",
     "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
     "exports": {
         ".": {
             "import": "./umd/f11y.es.js",
             "require": "./umd/f11y.js"
         },
-        "./umd": "./umd",
-        "./umd/plugins": "./umd/plugins"
+        "./umd": "./umd"
     },
     "cdn": "umd/f11y.min.js",
     "type": "module",
     "types": "umd/dts/index.d.ts",
     "files": [
-        "/umd",
-        "/umd/plugins"
+        "/umd"
     ],
     "jsdelivr": "umd/f11y.min.js",
     "author": "Finlay",
@@ -43,8 +41,7 @@
         "functional components",
         "modal dialogs",
         "dropdown menus",
-        "accordion component",
-        "toasts"
+        "accordion component"
     ],
     "engines": {
         "node": ">=18"
