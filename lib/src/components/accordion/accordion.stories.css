@@ -1,0 +1,95 @@
+/*******************************************
+ * BASE STYLING
+ *******************************************/
+    .f11y--accordion{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .f11y--accordion [f11y-accordion-item]{
+        border: 2px solid var(--background-alt);
+        border-radius: 5px;
+    }
+
+    .f11y--accordion:not(.has-css-animation) [f11y-accordion-item] [role=region]{
+        display: none;
+    }
+
+    .f11y--accordion [f11y-accordion-item].is-open [role=region]{
+        display: flex;
+    }
+
+    .f11y--accordion [f11y-accordion-item] [role=region] [f11y-accordion-content]{
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .f11y--accordion [f11y-accordion-item] [aria-controls]{
+        width: 100%;
+        border-radius: 0px;
+        border: none;
+    }
+
+
+/*******************************************
+ * CSS ANIMATED
+ *******************************************/
+    .f11y--accordion.has-css-animation [f11y-accordion-item] [role=region]{
+        height: 0;
+        overflow: hidden;
+    }
+
+    .f11y--accordion.has-css-animation.has-initialised [f11y-accordion-item] [role=region]{
+        animation: 300ms cubic-bezier(0.87, 0, 0.13, 1) k-fNLrdV forwards;
+    }
+
+    .f11y--accordion.has-css-animation [f11y-accordion-item].is-open [role=region]{
+        animation: 300ms cubic-bezier(0.87, 0, 0.13, 1) k-jYBrOR forwards;
+    }
+
+    @keyframes k-jYBrOR {
+        from {
+        height:0px
+        }
+        to {
+        height:var(--f11y-accordion-content-height, 0px)
+        }
+    }
+    @keyframes k-fNLrdV {
+        from {
+        height:var(--f11y-accordion-content-height, 0px)
+        }
+        to {
+        height:0px
+        }
+    }
+
+
+/*******************************************
+ * HORIZONTAL DIRECTION
+ *******************************************/
+    .f11y--accordion.is-horizontal-orientation{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .f11y--accordion.is-horizontal-orientation [f11y-accordion-item]{
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+        transition: flex-grow 1s ease;
+    }
+
+    .f11y--accordion.is-horizontal-orientation [f11y-accordion-item].is-open{
+        flex-grow: 1;
+        transition: flex-grow 1s ease;  
+    }
+
+    .f11y--accordion.is-horizontal-orientation [f11y-accordion-item] [aria-controls]{
+        width: 50px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-family: sans-serif;
+    }

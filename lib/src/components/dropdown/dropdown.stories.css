@@ -1,0 +1,39 @@
+.f11y--dropdown{
+    position: relative;
+}
+
+.f11y--dropdown [aria-labelledby]{
+    display: none;
+    position: absolute;
+    border: 2px solid #141414;
+    border-radius: 5px;
+    padding: 1rem;
+    width:max-content;
+    top: 100%;
+    transform-origin: top left;
+    margin-top: 5px;
+}
+
+.f11y--dropdown [aria-labelledby] button,
+.f11y--dropdown [aria-labelledby] [role=menuitem]{
+    border: 2px solid #141414;
+    border-radius: 5px;
+}
+
+.f11y--dropdown.is-open [aria-labelledby]{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.f11y--dropdown.is-animating.is-opening [aria-labelledby] {
+    animation: 
+        fadeIn 0.3s cubic-bezier(0, 0, 0.2, 1), 
+        scaleIn 0.2s cubic-bezier(0, 0, .2, 1);
+}
+
+.f11y--dropdown.is-animating.is-closing [aria-labelledby] {
+    animation: 
+        fadeOut 0.3s cubic-bezier(0, 0, 0.2, 1), 
+        scaleOut 0.2s cubic-bezier(0, 0, 0.2, 1);
+}

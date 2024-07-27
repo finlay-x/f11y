@@ -58,14 +58,6 @@ import f11y from 'f11y';
 
 ❌ Resizable Windows *(On the Roadmap for V1.0 Release - as a plugin)*
 
-
-### General Initialisation
-All f11y components are initialised in a similar way and usually follow this pattern:
-```js filename="app.js"
-const componentElement = document.querySelector(".my-component");
-new f11y.ComponentName(componentElement, configObject); // Config is optional in all components
-```
-
 ***! Full Documentation Coming Soon***
 
 ## Roadmap

@@ -1,62 +1,74 @@
 {
-    "name": "f11y",
-    "version": "0.0.26",
-    "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
-    "exports": {
-        ".": {
-            "import": "./umd/f11y.es.js",
-            "require": "./umd/f11y.js"
-        },
-        "./umd": "./umd"
+  "name": "f11y",
+  "version": "0.0.26",
+  "description": "A barebones collection of accessible JavaScript functionality components, with zero dependencies.",
+  "exports": {
+    ".": {
+      "import": "./umd/f11y.es.js",
+      "require": "./umd/f11y.js"
     },
-    "cdn": "umd/f11y.min.js",
-    "type": "module",
-    "types": "umd/dts/index.d.ts",
-    "files": [
-        "/umd"
-    ],
-    "jsdelivr": "umd/f11y.min.js",
-    "author": "Finlay",
-    "license": "GNU GPL",
-    "repository": "https://github.com/finlay-x/f11y",
-    "bugs": {
-        "url": "https://github.com/finlay-x/f11y/issues"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "rollup -c -w",
-        "build": "rollup -c && tsc",
-        "deploy": "npm run build && npm publish"
-    },
-    "keywords": [
-        "accessible",
-        "accordion",
-        "a11y",
-        "modal",
-        "tooltip",
-        "tabs",
-        "dropdown",
-        "responsize tables",
-        "component library",
-        "functional components",
-        "modal dialogs",
-        "dropdown menus",
-        "accordion component"
-    ],
-    "engines": {
-        "node": ">=18"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.23.7",
-        "@babel/eslint-parser": "^7.23.3",
-        "@babel/preset-env": "^7.23.8",
-        "@rollup/plugin-babel": "^6.0.4",
-        "@rollup/plugin-eslint": "^9.0.5",
-        "@rollup/plugin-json": "^6.1.0",
-        "@rollup/plugin-multi-entry": "^6.0.1",
-        "@rollup/plugin-terser": "^0.4.4",
-        "dts-bundle-generator": "^9.3.1",
-        "rollup": "^4.0.0",
-        "rollup-plugin-filesize": "^10.0.0"
-    }
+    "./umd": "./umd"
+  },
+  "cdn": "umd/f11y.min.js",
+  "type": "module",
+  "types": "umd/dts/index.d.ts",
+  "files": [
+    "/umd"
+  ],
+  "jsdelivr": "umd/f11y.min.js",
+  "author": "Finlay",
+  "license": "GNU GPL",
+  "repository": "https://github.com/finlay-x/f11y",
+  "bugs": {
+    "url": "https://github.com/finlay-x/f11y/issues"
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c && tsc",
+    "deploy": "npm run build && npm publish",
+    "storybook": "storybook dev -p 6006"
+  },
+  "keywords": [
+    "accessible",
+    "accordion",
+    "a11y",
+    "modal",
+    "tooltip",
+    "tabs",
+    "dropdown",
+    "responsize tables",
+    "component library",
+    "functional components",
+    "modal dialogs",
+    "dropdown menus",
+    "accordion component"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-env": "^7.23.8",
+    "@chromatic-com/storybook": "^1.6.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-multi-entry": "^6.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@storybook/addon-actions": "^8.2.5",
+    "@storybook/addon-console": "^3.0.0",
+    "@storybook/addon-essentials": "^8.2.5",
+    "@storybook/addon-interactions": "^8.2.5",
+    "@storybook/addon-links": "^8.2.5",
+    "@storybook/blocks": "^8.2.5",
+    "@storybook/html": "^8.2.5",
+    "@storybook/html-vite": "^8.2.5",
+    "@storybook/test": "^8.2.5",
+    "dts-bundle-generator": "^9.3.1",
+    "eslint-plugin-storybook": "^0.8.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "storybook": "^8.2.5"
+  }
 }

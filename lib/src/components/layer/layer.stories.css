@@ -1,0 +1,48 @@
+.f11y--layer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    justify-content: center;
+    align-items: center;
+}
+
+.f11y--layer.is-open {
+    display: flex;
+    z-index: 10;
+}
+
+.f11y--layer [role="dialog"]{
+    background-color: #FFFFFF;
+    border: 2px solid #141414;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 767px;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.f11y--layer.is-animating.is-opening{
+    animation: fadeIn 1s cubic-bezier(0, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+}
+
+.f11y--layer.is-animating.is-opening [role=dialog]{
+    animation: 
+        fadeIn 1s cubic-bezier(0, 0, 0.2, 1),
+        scaleIn 1s cubic-bezier(0, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+}
+
+.f11y--layer.is-animating.is-closing [role=dialog]{
+    animation: 
+        fadeOut 1s cubic-bezier(0, 0, 0.2, 1), 
+        scaleOut 1s cubic-bezier(0, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+}
+
+.f11y--layer.is-animating.is-closing{
+    animation: fadeOut 1s cubic-bezier(0, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+}
